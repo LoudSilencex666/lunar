@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:server": "pm2 start server.js --watch",
-    "logs:server" : "pm2 logs"
+    "logs:server": "pm2 logs"
   },
   "private": true,
   "dependencies": {
@@ -23,9 +23,12 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "http-errors": "^1.6.3",
+    "morgan": "^1.9.0",
     "rxjs": "^6.0.0",
     "serve-favicon": "^2.5.0",
     "zone.js": "^0.8.26"
