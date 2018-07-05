@@ -4,10 +4,13 @@ const logger = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql');
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Create global app object
 const app = express();
 
 const test = require('./routes/test');
-
 
 app.use(logger('common'));
 app.use(cors());
@@ -25,14 +28,29 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// development error handler
+// will print stacktrace
+if (!isProduction) {
+  app.use(function(err, req, res, next) {
+    console.log(err.stack);
 
-  // render the error page
+    res.status(err.status || 500);
+
+    res.json({'errors': {
+      message: err.message,
+      error: err
+    }});
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json('error');
+  res.json({'errors': {
+    message: err.message,
+    error: {}
+  }});
 });
 
 module.exports = app;
