@@ -8,6 +8,7 @@ const mysql = require('mysql');
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
+var con = require('./dbconnect');
 const app = express();
 
 const test = require('./routes/test');
