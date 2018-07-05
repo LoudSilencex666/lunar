@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-
+const mysql = require('mysql');
 const app = express();
 
 const test = require('./routes/test');
