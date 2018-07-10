@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
+
 const mysql = require('mysql');
 const connection = mysql.createConnection({
     host     : '83.15.215.203',
