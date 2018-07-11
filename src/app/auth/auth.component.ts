@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 
 export class AuthComponent {
-    authForm : FormGroup;
+    authForm: FormGroup;
 
     constructor(private fb: FormBuilder) {
         this.createForm();
@@ -19,6 +19,6 @@ export class AuthComponent {
         this.authForm = this.fb.group({
             username : ['', Validators.required],
             password : ['', Validators.required]
-        })
+        });
     }
 }
