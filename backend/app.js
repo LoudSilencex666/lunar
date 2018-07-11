@@ -23,35 +23,35 @@ app.get('/', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 // development error handler
 // will print stacktrace
 if (!isProduction) {
-  app.use(function(err, req, res, next) {
-    console.log(err.stack);
+    app.use(function(err, req, res, next) {
+        console.log(err.stack);
 
-    res.status(err.status || 500);
+        res.status(err.status || 500);
 
-    res.json({'errors': {
-      message: err.message,
-      error: err
-    }});
-  });
+        res.json({'errors': {
+          message: err.message,
+          error: err
+        }});
+    });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({'errors': {
-    message: err.message,
-    error: {}
-  }});
+    res.status(err.status || 500);
+    res.json({'errors': {
+      message: err.message,
+      error: {}
+    }});
 });
 
 module.exports = app;
