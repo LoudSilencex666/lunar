@@ -4,12 +4,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 const mysql = require('mysql');
 const connection = mysql.createConnection({
-    host     : '83.15.215.203',
-    port     : '3306',
-    user     : 'root',
-    password : 'pHT2yU6B_-NB', // process.env.PASSWORD_FOR_DB
-    database : 'test'
+    host     : process.env.HOST,
+    port     : process.env.PORT,
+    user     : process.env.USER,
+    password : process.env.PASSWORD,
+    database : process.env.DATABASE
 });
 
-console.log(process.env.PASSWORD_FOR_DB)
+
 module.exports = connection;
