@@ -37,6 +37,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Enviroment Variables
-.env
+src/app/auth/auth.module.ts

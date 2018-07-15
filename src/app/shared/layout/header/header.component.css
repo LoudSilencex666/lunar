@@ -1,0 +1,19 @@
+.logo{
+grid-column: 1/4;
+}
+
+.acctype{
+grid-column: 4/7;
+}
+
+.accname{
+grid-column: 7/13;
+}
+
+.lastlogin{
+grid-column: 13/19;
+}
+
+.homebutton{
+grid-column: 19/21;
+}

@@ -3,12 +3,20 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 
+import { SharedModule } from '../shared';
+import { HeaderComponent } from '../shared/layout/header/header.component';
+import { SidebarComponent } from '../shared/layout/sidebar/sidebar.component';
+
+
 @NgModule({
     imports: [
-        HomeRoutingModule
+        HomeRoutingModule,
+        SharedModule
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        HeaderComponent,
+        SidebarComponent
     ],
     providers: [
     ]

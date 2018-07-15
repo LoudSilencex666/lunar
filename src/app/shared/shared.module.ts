@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { /*FormsModule,*/ ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
     imports: [
