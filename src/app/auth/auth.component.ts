@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AuthModel } from '../core';
 
 @Component({
     selector: 'app-auth',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 export class AuthComponent {
     authForm: FormGroup;
+    authModel = AuthModel;
 
     constructor(private fb: FormBuilder) {
         this.createForm();
