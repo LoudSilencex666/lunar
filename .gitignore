@@ -38,3 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 src/app/auth/auth.module.ts
+
+# env file
+.env
