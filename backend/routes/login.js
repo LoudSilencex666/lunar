@@ -1,23 +1,26 @@
 const express = require('express');
 const router = express.Router();
+
+const dbPool = require('../dbconnect');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const connection = require('../dbconnect');
 
+const config = require('../config');
 
 /* GET home page. */
 router.post('/login', function(req, res) {
-    // to musi być promise, sprawdza czy wysłany username jest w bazie i sprawdza czy podane hasło jest prawidłowe jak tak to zwraca mu tokena
-    // wtedy reszta stron wymaga tego tokenu jak nie ma to nie dostanie dostępu, więc token tworzy się przy logowaniu i usuwa przy lougoucie
+    dbPool.query('SELECT * FROM users WHERE `name` =' + req.body.login).then( (err, user) => {
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No user found.');
 
-    // select where req.body.username
-    // if this user is in DB
-    // var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-    // if password isValid
-    // var token = jwt.sign({ id: user._id }, config.secret, {
-    //    expiresIn: 86400 - expires in 24 hours
-    // });
-    // res.status(200).send({ auth: true, token: token });
+        let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+
+        var token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400 // expires in 24 hours
+        });
+        res.status(200).send({ auth: true, token: token });
+    })
 });
 
 module.exports = router;
