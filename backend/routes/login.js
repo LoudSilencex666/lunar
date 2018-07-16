@@ -8,7 +8,8 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 /* GET home page. */
-router.post('/login', function(req, res) {
+router.get('/', function(req, res) {
+    console.log('xD');
     dbPool.query('SELECT * FROM users WHERE `name` =' + req.body.login).then( (err, user) => {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');

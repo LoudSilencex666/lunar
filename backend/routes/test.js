@@ -4,7 +4,7 @@ const dbPool = require('../dbconnect');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     dbPool.query('SELECT * FROM users').then( result =>{
         console.log(result);
     }).then( () => {
