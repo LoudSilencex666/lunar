@@ -6,6 +6,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared';
 import { HeaderComponent } from '../shared/layout/header/header.component';
 import { SidebarComponent } from '../shared/layout/sidebar/sidebar.component';
+import { ChartComponent } from './chart/chart.component';
+import { NbrowserComponent } from './news_browser/nbrowser.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { SidebarComponent } from '../shared/layout/sidebar/sidebar.component';
     declarations: [
         HomeComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        ChartComponent,
+        NbrowserComponent
     ],
     providers: [
     ]
