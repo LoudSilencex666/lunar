@@ -1,8 +1,20 @@
 a {
-    padding: 8px 8px 8px 32px;
+    padding: 100px 8px 0px 12px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+}
+
+.sidebar {
+    width: 100px;
+    height: 90vh;
+    margin-top: 5vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 50px;
+    background-color: rgb(37, 37, 37);
+    left: 0;
 }
