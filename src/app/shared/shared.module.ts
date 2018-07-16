@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { /*FormsModule,*/ ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './layout/header/header.component';
+import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
+
 
 @NgModule({
     imports: [
@@ -9,9 +10,14 @@ import { HeaderComponent } from './layout/header/header.component';
         // FormsModule
     ],
     declarations: [
+        SidebarComponent,
+        HeaderComponent,
+        FooterComponent
     ],
     exports: [
         ReactiveFormsModule,
+        SidebarComponent,
+        HeaderComponent
         // FormsModule
     ]
 })
