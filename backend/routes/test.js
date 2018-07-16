@@ -8,9 +8,10 @@ const dbPool = require('../dbconnect');
 router.get('/', function(req, res, next) {
     dbPool.query('SELECT * FROM zipa').then(result => {
         console.log(result);
+        res.status(200).send("chuj w to");
     });
 
-    res.status(200).send("chuj w to");
+
 
 });
 
