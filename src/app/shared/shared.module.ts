@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { /*FormsModule,*/ ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
         ReactiveFormsModule,
+        HttpClientModule
         // FormsModule
     ],
     declarations: [
@@ -17,7 +18,8 @@ import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
     exports: [
         ReactiveFormsModule,
         SidebarComponent,
-        HeaderComponent
+        HeaderComponent,
+        HttpClientModule
         // FormsModule
     ]
 })

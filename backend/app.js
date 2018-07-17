@@ -10,7 +10,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 var con = require('./dbconnect');
 const app = express();
 
-const test = require('./routes/test');
+const home = require('./routes/home');
 const login = require('./routes/login');
 
 app.use(logger('common'));
@@ -19,8 +19,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', test);
+app.use('/', home);
 app.use('/login', login);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

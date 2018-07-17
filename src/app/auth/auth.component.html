@@ -5,7 +5,8 @@
     <form id="login" class="login authorization" [formGroup]="authForm">
         <input type="text" name="login-username" placeholder="Username" formControlName="username">
         <input type="password" name="login-password" placeholder="Password" formControlName="password">
-        <button routerLink="/">PUTIN</button>
+
     </form>
     <p>Form value: {{ authForm.value }}</p>
+    <button (click)="login()">PUTIN</button>
 </div>

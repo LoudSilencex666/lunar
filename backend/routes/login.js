@@ -8,9 +8,9 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
     console.log('xD');
-    dbPool.query('SELECT * FROM users WHERE `name` =' + req.body.login).then( (err, user) => {
+    dbPool.query('SELECT * FROM users WHERE id = 78').then( (err, user) => {
         if (err) return res.status(500).send('Error on the server.'); //będzie zwracać jsonową odpowiedź na angulara i on wyświetli błąd
         if (!user) return res.status(404).send('No user found.');
 
@@ -22,6 +22,16 @@ router.get('/', function(req, res) {
         });
         res.status(200).send({ auth: true, token: token });
     })
+});
+
+router.get('/', function(req, res) {
+    dbPool.query('SELECT * FROM users WHERE id = 78').then( (err, user) => {
+        res.status(200).send(user);
+    })
+    //console.log('xD');
+
+    //res.status(200).json(zipa, '111');
+
 });
 
 module.exports = router;
