@@ -11,7 +11,7 @@ const config = require('../config');
 router.get('/', function(req, res) {
     console.log('xD');
     dbPool.query('SELECT * FROM users WHERE `name` =' + req.body.login).then( (err, user) => {
-        if (err) return res.status(500).send('Error on the server.');
+        if (err) return res.status(500).send('Error on the server.'); //będzie zwracać jsonową odpowiedź na angulara i on wyświetli błąd
         if (!user) return res.status(404).send('No user found.');
 
         let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
