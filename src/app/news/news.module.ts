@@ -7,11 +7,13 @@ import { SharedModule } from '../shared';
 
 @NgModule({
   imports: [
-    SharedModule,
-    NewsRoutingModule
-  ],
-  declarations: [
+        SharedModule,
+        NewsRoutingModule
+    ],
+    declarations: [
       NewsComponent
-  ]
+    ],
+    providers: [
+    ]
 })
 export class NewsModule { }

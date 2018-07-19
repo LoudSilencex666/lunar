@@ -7,6 +7,7 @@ import { SharedModule } from '../shared';
 import { HomeComponent } from './home.component';
 import { ChartComponent } from './chart/chart.component';
 import { NbrowserComponent } from './news_browser/nbrowser.component';
+import { NewsServcie } from './news.service';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NbrowserComponent } from './news_browser/nbrowser.component';
         NbrowserComponent
     ],
     providers: [
+        NewsServcie
     ]
 })
 

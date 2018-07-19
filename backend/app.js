@@ -12,6 +12,7 @@ const app = express();
 
 const home = require('./routes/home');
 const login = require('./routes/login');
+const news = require('./routes/news');
 
 app.use(logger('common'));
 app.use(cors());
@@ -21,6 +22,7 @@ app.use(cookieParser());
 
 app.use('/', home);
 app.use('/login', login);
+app.use('/news', news)
 
 
 // catch 404 and forward to error handler

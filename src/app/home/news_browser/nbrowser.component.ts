@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NewsServcie } from '../news.service';
+import { NewsModel } from '../../core';
+
 
 
 @Component({
@@ -7,4 +10,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./nbrowser.component.css']
 })
 
-export class NbrowserComponent {}
+export class NbrowserComponent implements OnInit {
+    newsModel = NewsModel;
+
+    constructor(private newsService: NewsServcie) {}
+
+    ngOnInit() {
+        this.newsService.getNews();
+    }
+}
