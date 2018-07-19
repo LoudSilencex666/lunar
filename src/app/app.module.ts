@@ -5,9 +5,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared';
+
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
-import { SharedModule } from './shared';
 import { NewsModule } from './news/news.module';
 import { ProfileModule } from './profile/profile.module';
 import { GroupsModule } from './groups/groups.module';
@@ -16,17 +18,21 @@ import { SubjectsModule } from './subjects/subjects.module';
 import { UsersModule } from './users/users.module';
 
 
+
 @NgModule({
     declarations: [
       AppComponent
     ],
     imports: [
       AppRoutingModule,
-      BrowserModule,
       BrowserAnimationsModule,
+      BrowserModule,
+      CoreModule,
+      SharedModule,
+
+
       AuthModule,
       HomeModule,
-      SharedModule,
       NewsModule,
       ProfileModule,
       GroupsModule,
