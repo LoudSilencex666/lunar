@@ -40,4 +40,5 @@ Thumbs.db
 
 # env file
 .env
+
 /src/environments/environment.ts

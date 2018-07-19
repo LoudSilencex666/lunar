@@ -9,23 +9,25 @@ const config = require('../config');
 
 /* GET home page. */
 router.post('/', function(req, res) {
-    console.log('xD');
-    dbPool.query('SELECT * FROM users WHERE id = 78').then( (err, user) => {
-        if (err) return res.status(500).send('Error on the server.'); //będzie zwracać jsonową odpowiedź na angulara i on wyświetli błąd
-        if (!user) return res.status(404).send('No user found.');
-
-        let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-
+    dbPool.query('SELECT * FROM users WHERE id = 78').then( (user) => {
+        if(req.body.password !== user.password) {
+            console.log('!blad');
+        }
+        //let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        //if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+        console.log(user);
         var token = jwt.sign({ id: user.id }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
         });
         res.status(200).send({ auth: true, token: token });
-    })
+    }).catch( function(err) {
+        console.log(err);
+    });
 });
 
 router.get('/', function(req, res) {
     dbPool.query('SELECT * FROM users WHERE id = 78').then( (err, user) => {
+        console.log(user)
         res.status(200).send(user);
     })
     //console.log('xD');
