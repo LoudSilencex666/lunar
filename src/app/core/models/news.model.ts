@@ -1,5 +1,4 @@
-export class NewsModel {
-    id: string;
+export interface NewsTitle {
+    id: number;
     title: string;
-    content: string;
 }

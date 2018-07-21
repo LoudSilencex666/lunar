@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 app.use('/', home);
 app.use('/login', login);
-app.use('/news', news)
+app.use('/news', news);
 
 
 // catch 404 and forward to error handler

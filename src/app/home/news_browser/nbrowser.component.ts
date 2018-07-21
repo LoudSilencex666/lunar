@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NewsServcie } from '../news.service';
-import { NewsModel } from '../../core';
+import { NewsTitle, NewsContent } from '../../core';
 
 
 
@@ -11,11 +11,19 @@ import { NewsModel } from '../../core';
 })
 
 export class NbrowserComponent implements OnInit {
-    newsModel = NewsModel;
-
+    titles: NewsTitle[];
+    content: NewsContent[];
     constructor(private newsService: NewsServcie) {}
 
     ngOnInit() {
-        this.newsService.getNews();
+        this.newsService.getNewsTitle()
+        .subscribe((data: NewsTitle[]) => {
+            this.titles = data;
+        });
     }
+
+    getNewsContentData() {
+        this.newsService.getNewsContent();
+    }
+
 }
