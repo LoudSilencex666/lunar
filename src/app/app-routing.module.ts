@@ -1,32 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
-
-    /*{
-      path: 'news',
-      loadChildren: './settings/settings.module#SettingsModule'
-    },
-    {
-      path: 'profile',
-      loadChildren: './profile/profile.module#ProfileModule'
-    },
-    {
-      path: 'groups',
-      loadChildren: './editor/editor.module#EditorModule'
-    },
-    {
-      path: 'stats',
-      loadChildren: './article/article.module#ArticleModule'
-    },
-    {
-      path: 'subjects',
-      loadChildren: './article/article.module#ArticleModule'
-    },
-    {
-      path: 'users',
-      loadChildren: './article/article.module#ArticleModule'
-    }*/
 
 ];
 
