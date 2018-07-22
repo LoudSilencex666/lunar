@@ -10,8 +10,11 @@ const config = require('../config');
 /* GET home page. */
 router.post('/', function(req, res) {
     dbPool.query('SELECT * FROM users WHERE id = 78').then( (user) => {
+        user = user[0];
         if(req.body.password !== user.password) {
             console.log('!blad');
+            console.log(req.body);
+            console.log(req.body.password, user.password);
         }
         //let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         //if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });

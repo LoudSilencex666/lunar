@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthModel } from '../core';
@@ -10,12 +10,16 @@ import { AuthService } from './auth.service';
     styleUrls: ['./auth.component.css'],
 })
 
-export class AuthComponent {
+export class AuthComponent implements OnInit {
     authForm: FormGroup;
     authModel = AuthModel;
 
     constructor(private fb: FormBuilder, private authService: AuthService) {
         this.createForm();
+    }
+
+    ngOnInit() {
+        console.log(this.authForm.value);
     }
 
     createForm() {
@@ -25,7 +29,8 @@ export class AuthComponent {
         });
     }
 
-    login(): void {
-        this.authService.sendLogin();
+    login() {
+        console.log(this.authForm.value);
+        this.authService.sendLogin(this.authForm.value);
     }
 }
