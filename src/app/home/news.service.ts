@@ -9,14 +9,7 @@ import { Observable } from 'rxjs';
 export class NewsServcie {
     constructor(private http: HttpClient) {}
 
-    getNewsTitle() {
+    getNews() {
         return this.http.get('http://localhost:3000/news');
-
-    }
-    getNewsContent() {
-        this.http.post('http://localhost:3000/news/content', {id: '2'})
-        .subscribe((data: any[]) => {
-            console.log(data);
-        });
     }
 }

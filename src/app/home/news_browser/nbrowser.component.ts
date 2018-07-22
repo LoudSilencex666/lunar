@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewsServcie } from '../news.service';
-import { NewsTitle, NewsContent } from '../../core';
-
-
+import { News } from '../../core';
+import { config } from 'rxjs';
 
 @Component({
     selector: 'app-home-nbrowser',
@@ -11,19 +10,19 @@ import { NewsTitle, NewsContent } from '../../core';
 })
 
 export class NbrowserComponent implements OnInit {
-    titles: NewsTitle[];
-    content: NewsContent[];
+    news: News[];
+    activeContent = {};
     constructor(private newsService: NewsServcie) {}
 
     ngOnInit() {
-        this.newsService.getNewsTitle()
-        .subscribe((data: NewsTitle[]) => {
-            this.titles = data;
+        this.newsService.getNews()
+        .subscribe((data: News[]) => {
+            this.news = data;
         });
     }
 
-    getNewsContentData() {
-        this.newsService.getNewsContent();
+    getContent(i: number) {
+        this.activeContent = this.news[i];
+        console.log(this.activeContent);
     }
-
 }
