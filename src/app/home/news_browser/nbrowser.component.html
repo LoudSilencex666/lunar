@@ -1,8 +1,8 @@
 <div class="news-title-browser">
-    <ul *ngFor="let title of titles">
-        <li (click)="getNewsContentData()">{{ title.id }} {{ title.title }}</li>
+    <ul *ngFor="let title of news; index as i">
+        <li (click)="getContent(i)">{{ title.title }}</li>
     </ul>
 </div>
 <div class="news-content-browser">
-    <p *ngIf=""></p>
+    <p></p>
 </div>
