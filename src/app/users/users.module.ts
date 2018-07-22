@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './users-routing.module';
-
 import { SharedModule } from '../shared';
+
+import { UsersComponent } from './users.component';
+import { EditUserComponent } from './editUser/editUser.component';
+import { AddUserComponent } from './addUser/addUser.component';
+import { DeleteUserComponent } from './deleteUser/deleteUser.component';
+
+
 
 
 @NgModule({
@@ -12,7 +17,11 @@ import { SharedModule } from '../shared';
     SharedModule
   ],
   declarations: [
-    UsersComponent
+    UsersComponent,
+    AddUserComponent,
+    DeleteUserComponent,
+    EditUserComponent,
   ]
+
 })
 export class UsersModule { }
