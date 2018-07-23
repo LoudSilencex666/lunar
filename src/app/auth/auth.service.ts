@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService, AuthModel } from '../core';
 
 @Injectable()
 export class AuthService {
-    constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient,
+        private apiService: ApiService
+    ) {}
 
-    sendLogin() {
-        this.http.post('http://localhost:3000/login', {login: 'oXvAsm45', password: 123}).subscribe(
+    sendLogin(authForm) {
+        return this.apiService.post('/login', {user: authForm}).subscribe(
         (data: any[]) => {
+            console.log(authForm);
             console.log(data);
         });
-        console.log('works');
     }
 }

@@ -8,6 +8,8 @@ import { EditUserComponent } from './editUser/editUser.component';
 import { AddUserComponent } from './addUser/addUser.component';
 import { DeleteUserComponent } from './deleteUser/deleteUser.component';
 
+import { UsersService } from './users.service';
+
 
 
 
@@ -21,6 +23,9 @@ import { DeleteUserComponent } from './deleteUser/deleteUser.component';
     AddUserComponent,
     DeleteUserComponent,
     EditUserComponent,
+  ],
+  providers: [
+      UsersService
   ]
 
 })
