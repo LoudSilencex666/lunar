@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 
 
+
 @Component({
     selector: 'app-layout-sidebar',
     templateUrl: './sidebar.component.html',
@@ -23,7 +24,7 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
 export class SidebarComponent {
     active = false;
 
-    get stateName() {
+    get sidebarState() {
         return this.active ? 'active' : 'inactive';
     }
 
