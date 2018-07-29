@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class StatsService {
     constructor(
-        private apiService: ApiService
+        private http: HttpClient
     ) {}
 
-    sendId(id) {
-        return this.apiService.post('/stats', {id: id})
-        .subscribe();
+    sendId(userid) {
+        this.http.post<{message: string}>('http://localhost:3000/stats', {id: userid})
+        .subscribe((data) => {
+            console.log(userid);
+            console.log(data.message);
+        });
+    }
+
+    getUserContent() {
+        return this.http.get('http://localhost:3000/stats');
     }
 }

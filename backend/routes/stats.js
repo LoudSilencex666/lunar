@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const dbPool = require('../dbconnect')
+const dbPool = require('../dbconnect');
 
-let id = '75';
+let id;
 
-// router.post('/', function(req, res) {
-// });
+    router.post('/', function(req, res) {
+        id = req.body.id;
+        console.log(id);
+        res.status(201).json({
+            message: 'The id is '+ id
+        });
+    });
 
 router.get('/', function(req, res) {
     dbPool.query('SELECT * FROM oceny WHERE id_uczen = "'+ id +'";').then( (marks) => {

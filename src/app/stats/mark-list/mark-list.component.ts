@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StatsService } from '../stats.service';
+import { Marks } from '../../core';
 
 
 @Component({
@@ -10,9 +11,14 @@ import { StatsService } from '../stats.service';
 })
 
 export class MarkListComponent implements OnInit {
+    marks: Marks[];
 constructor(private statsService: StatsService) {}
 
     ngOnInit() {
-        this.statsService.sendId('1');
+        this.statsService.sendId('75');
+        this.statsService.getUserContent()
+        .subscribe((data: Marks[]) => {
+            this.marks = data;
+        });
     }
 }
