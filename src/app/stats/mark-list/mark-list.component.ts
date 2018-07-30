@@ -15,10 +15,13 @@ export class MarkListComponent implements OnInit {
 constructor(private statsService: StatsService) {}
 
     ngOnInit() {
-        this.statsService.sendId('75');
-        this.statsService.getUserContent()
-        .subscribe((data: Marks[]) => {
-            this.marks = data;
+        this.statsService.sendId('75')
+        .subscribe((message) => {
+            console.log(message);
+            this.statsService.getUserContent()
+            .subscribe((data: Marks[]) => {
+                this.marks = data;
+            });
         });
     }
 }

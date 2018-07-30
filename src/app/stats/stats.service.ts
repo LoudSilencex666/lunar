@@ -8,11 +8,7 @@ export class StatsService {
     ) {}
 
     sendId(userid) {
-        this.http.post<{message: string}>('http://localhost:3000/stats', {id: userid})
-        .subscribe((data) => {
-            console.log(userid);
-            console.log(data.message);
-        });
+        return this.http.post<{message: string}>('http://localhost:3000/stats', {id: userid});
     }
 
     getUserContent() {
