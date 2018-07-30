@@ -16,8 +16,8 @@ router.post('/', function(req, res) {
 router.get('/', function(req, res) {
     dbPool.query('SELECT * FROM oceny WHERE id_uczen = "'+ id +'";').then( (marks) => {
         console.log(marks);
-        if (marks.length > 0){
-        res.status(200).json(marks);
+        if (marks.length > 0) {
+            res.status(200).json(marks);
         }
         else res.status(500).send('No content available for selected user.')
     }).catch( function(err) {

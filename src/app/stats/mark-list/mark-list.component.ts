@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StatsService } from '../stats.service';
-import { Marks } from '../../core';
+import { StatsService, SubjectService } from '../../core';
+import { Marks, Subjects } from '../../core';
 
 
 @Component({
@@ -12,16 +12,30 @@ import { Marks } from '../../core';
 
 export class MarkListComponent implements OnInit {
     marks: Marks[];
-constructor(private statsService: StatsService) {}
+    subjects: Subjects[];
+
+constructor(
+    private statsService: StatsService,
+    private subjectService: SubjectService) {}
 
     ngOnInit() {
+        this.subjectService.getSubjects()
+        .subscribe((data: Subjects[]) => {
+            console.log(data);
+            this.subjects = data;
+        });
+
         this.statsService.sendId('75')
         .subscribe((message) => {
             console.log(message);
             this.statsService.getUserContent()
             .subscribe((data: Marks[]) => {
+                console.log(data);
                 this.marks = data;
             });
         });
+    }
+
+    matchId() {
     }
 }

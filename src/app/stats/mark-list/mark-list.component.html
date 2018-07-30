@@ -1,3 +1,8 @@
-<ul *ngFor="let content of marks">
-    <li>{{ content.Ocena }}</li>
-</ul>
+<div class="content_table">
+    <table>
+        <tr *ngFor="let subject of subjects">
+            <th>{{ subject.name }}</th>
+            <td (click)="matchId()" *ngFor="let mark of marks">{{ mark.Ocena }}</td>
+        </tr>
+    </table>
+</div>
