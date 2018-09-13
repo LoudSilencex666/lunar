@@ -35,7 +35,4 @@ constructor(
             });
         });
     }
-
-    matchId() {
-    }
 }

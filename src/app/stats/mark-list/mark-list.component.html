@@ -1,8 +1,10 @@
 <div class="content_table">
-    <table>
-        <tr *ngFor="let subject of subjects">
-            <th>{{ subject.name }}</th>
-            <td (click)="matchId()" *ngFor="let mark of marks">{{ mark.Ocena }}</td>
-        </tr>
-    </table>
+    <div class="subject_list" *ngFor="let subject of subjects">
+        {{ subject.name }} 
+        <ng-container *ngFor="let mark of marks">
+            <div class="marks_lists" *ngIf="mark.id_przedmiot === subject.Id">
+                {{ mark.Ocena }}
+            </div>
+        </ng-container>
+    </div>
 </div>
