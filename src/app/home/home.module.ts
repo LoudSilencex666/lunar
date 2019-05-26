@@ -7,15 +7,16 @@ import { SharedModule } from '../shared';
 import { HomeComponent } from './home.component';
 import { ChartComponent } from './chart/chart.component';
 import { NbrowserComponent } from './news_browser/nbrowser.component';
-import { NewsServcie } from './news.service';
 import { CommonModule } from '@angular/common';
+import { CoreModule } from '../core';
 
 
 @NgModule({
     imports: [
         CommonModule,
         HomeRoutingModule,
-        SharedModule
+        SharedModule,
+        CoreModule
     ],
     declarations: [
         HomeComponent,
@@ -23,7 +24,6 @@ import { CommonModule } from '@angular/common';
         NbrowserComponent
     ],
     providers: [
-        NewsServcie
     ]
 })
 

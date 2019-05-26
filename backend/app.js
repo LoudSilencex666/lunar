@@ -13,6 +13,8 @@ const app = express();
 const home = require('./routes/home');
 const login = require('./routes/login');
 const news = require('./routes/news');
+const stats = require('./routes/stats');
+const subjects = require('./routes/subjects');
 
 app.use(logger('common'));
 app.use(cors());
@@ -23,7 +25,8 @@ app.use(cookieParser());
 app.use('/', home);
 app.use('/login', login);
 app.use('/news', news);
-
+app.use('/stats', stats);
+app.use('/subjects', subjects);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

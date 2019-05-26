@@ -1,8 +1,9 @@
 <div class="news-title-browser">
     <ul *ngFor="let title of news; index as i">
-        <li (click)="getContent(i)">{{ title.title }}</li>
+        <li *ngIf="news.length > 0" (click)="getContent(i)">{{ title.title }}</li>
     </ul>
+    <div class="title-page-viewer"></div>
 </div>
 <div class="news-content-browser">
-    <p></p>
+    <p>{{ activeContent }}</p>
 </div>
