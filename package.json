@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:server": "pm2 start server.js --watch",
-    "logs:server": "pm2 logs"
+    "logs:server": "pm2 logs",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
