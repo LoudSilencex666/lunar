@@ -10,10 +10,10 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
     animations: [
         trigger('sidebarState', [
             state('active', style({
-                width: '500px'
+                width: '500px';
             })),
             state('inactive', style({
-                width: '100px'
+                width: '90px'
             })),
             transition('active => inactive', animate('300ms ease-in')),
             transition('inactive => active', animate('300ms ease-out'))
