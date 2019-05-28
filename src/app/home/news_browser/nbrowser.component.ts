@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { NewsServcie } from '../../core';
 import { News } from '../../core';
@@ -10,19 +10,29 @@ import { News } from '../../core';
 })
 
 export class NbrowserComponent implements OnInit {
-    news: News[];
-    activeContent;
-    constructor(private newsService: NewsServcie) {}
+    sliderNews: string[];
+    currentTransform: number;
 
-    ngOnInit() {
-        this.newsService.getNews()
-        .subscribe((data: News[]) => {
-            this.news = data;
-        });
+    constructor() {
+        this.sliderNews = ['Twoja stara1', 'Twoja stara2', 'Twoja stara3'];
+        this.currentTransform = 100;
+
     }
 
-    getContent(i: number) {
-        this.activeContent = this.news[i];
-        this.activeContent = this.activeContent['content'];
+    ngOnInit() {
+
+    }
+
+    settingSlide() {
+        const styles = {
+            'transform': 'translateX(-' + this.currentTransform + '%)',
         }
+
+        return styles;
+    }
+
+    changeSlide(x) {
+        this.currentTransform = 100 * x;
+    }
+
 }

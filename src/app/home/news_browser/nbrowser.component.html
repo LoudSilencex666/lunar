@@ -1,9 +1,21 @@
-<div class="news-title-browser">
-    <ul *ngFor="let title of news; index as i">
-        <li *ngIf="news.length > 0" (click)="getContent(i)">{{ title.title }}</li>
-    </ul>
-    <div class="title-page-viewer"></div>
+<div class="news-slider">
+    <div id="{{i}}" class="slide" [ngStyle]="settingSlide()" *ngFor="let slide of sliderNews; index as i">
+        <div class="title">
+            {{slide}}
+        </div>
+        <div class="content">
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+            no trochę dłuższy content text no trochę dłuższy content text
+        </div>
+    </div>
+    <div class="news-slider-controls" >
+        <div *ngFor="let slide of sliderNews index as i" (click)="changeSlide(i)">{{i + 1}}</div>
+    </div>
 </div>
-<div class="news-content-browser">
-    <p>{{ activeContent }}</p>
-</div>
+
+
