@@ -3,7 +3,7 @@ const router = express.Router();
 const dbPool = require('../dbconnect');
 
 router.get('/', function(req, res) {
-    dbPool.query('SELECT * FROM przedmioty').then( (subjects) => {
+    dbPool.query('SELECT * FROM subjects').then( (subjects) => {
         console.log(subjects);
         if (subjects.length > 0) {
             res.status(200).json(subjects);

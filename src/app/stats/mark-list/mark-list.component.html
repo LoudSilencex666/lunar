@@ -2,8 +2,8 @@
     <div class="subject_list" *ngFor="let subject of subjects">
         {{ subject.name }} 
         <ng-container *ngFor="let mark of marks">
-            <div class="marks_lists" *ngIf="mark.id_przedmiot === subject.Id">
-                {{ mark.Ocena }}
+            <div class="marks_lists" *ngIf="mark.subject_id === subject.id">
+                {{ mark.value }}
             </div>
         </ng-container>
     </div>

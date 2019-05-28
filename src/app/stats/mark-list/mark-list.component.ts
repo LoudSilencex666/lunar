@@ -25,7 +25,7 @@ constructor(
             this.subjects = data;
         });
 
-        this.statsService.sendId('75')
+        this.statsService.sendId('3')
         .subscribe((message) => {
             console.log(message);
             this.statsService.getUserContent()
