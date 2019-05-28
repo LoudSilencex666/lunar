@@ -1,7 +1,7 @@
 export interface Marks {
-    Id: number;
-    Ocena: number;
-    Waga: number;
-    id_uczen: number;
-    id_przedmiot: number;
+    id: number;
+    value: number;
+    weight: number;
+    user_id: number;
+    subject_id: number;
 }
