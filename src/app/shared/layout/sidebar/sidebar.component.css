@@ -43,6 +43,7 @@ a div {
     justify-content: center;
     align-items: center;
     height: 70%;
+    width: 410px;
     max-width: 410px;
 }
 

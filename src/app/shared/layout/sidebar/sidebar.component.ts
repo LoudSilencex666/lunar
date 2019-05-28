@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {trigger, state, style, animate, transition} from '@angular/animations';
-
-
+import {trigger, query, state, style, animate, transition} from '@angular/animations';
 
 @Component({
     selector: 'app-layout-sidebar',
@@ -9,14 +7,14 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
     styleUrls: ['./sidebar.component.css'],
     animations: [
         trigger('sidebarState', [
-            state('active', style({
-                width: '500px';
-            })),
             state('inactive', style({
                 width: '90px'
             })),
-            transition('active => inactive', animate('300ms ease-in')),
-            transition('inactive => active', animate('300ms ease-out'))
+            state('active', style({
+                width: '500px'
+            })),
+            transition('inactive => active', animate('300ms ease-in')),
+            transition('active => inactive', animate('300ms ease-out'))
         ])
     ]
 })
