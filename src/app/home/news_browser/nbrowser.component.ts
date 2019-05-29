@@ -11,12 +11,16 @@ import { News } from '../../core';
 
 export class NbrowserComponent implements OnInit {
     sliderNews: string[];
+    sliderControlInactiveSrc: string;
+    sliderControlActiveSrc: string;
+    sliderControlSrc: string;
     currentTransform: number;
 
     constructor() {
         this.sliderNews = ['Twoja stara1', 'Twoja stara2', 'Twoja stara3'];
-        this.currentTransform = 100;
-
+        this.currentTransform = 0;
+        this.sliderControlInactiveSrc = '/assets/images/slider/inactive.png';
+        this.sliderControlActiveSrc = '/assets/images/slider/active.png';
     }
 
     ngOnInit() {

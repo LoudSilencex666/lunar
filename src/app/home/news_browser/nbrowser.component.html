@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="news-slider-controls" >
-        <div *ngFor="let slide of sliderNews index as i" (click)="changeSlide(i)">{{i + 1}}</div>
+        <div class="inactive" *ngFor="let slide of sliderNews; index as i" (click)="changeSlide(i)" [ngClass]="{'active': i === currentTransform || i === currentTransform / 100}"></div>
     </div>
 </div>
 
