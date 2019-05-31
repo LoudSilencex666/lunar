@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ApiService, NewsServcie, StatsService, SubjectService } from './services';
+import { MessagesService } from './services/messages.service';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { ApiService, NewsServcie, StatsService, SubjectService } from './service
     ApiService,
     NewsServcie,
     StatsService,
-    SubjectService
+    SubjectService,
+    MessagesService
   ],
   declarations: []
 })
