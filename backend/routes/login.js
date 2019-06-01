@@ -7,29 +7,43 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config');
 
-/* GET home page. */
+const findUserByLogin = require('../helpers/findUserByLogin');
+
+/* Login */
 router.post('/', function(req, res) {
-    dbPool.query('SELECT * FROM users WHERE id = 78').then( (user) => {
-        user = user[0];
-        if(req.body.password !== user.password) {
-            console.log('!blad');
-            console.log(req.body);
-            console.log(req.body.password, user.password);
+    const login = req.body.login;
+    const password = req.body.password;
+
+    async function loggingUserIn() {
+        const user = await findUserByLogin(login);
+
+        if (typeof user !== 'undefined' && password === user.password) {
+            const userId = user.id + '';
+            console.log(user.id);
+
+            const accessToken = jwt.sign({}, config.secret, {
+                algorithm: 'HS256',
+                expiresIn: 24 * 60 * 60,
+                subject: userId
+            });
+
+            console.log(accessToken);
+            res.status(200).cookie("SESSIONID", accessToken, {httpOnly:true, secure:true});
+        } else {
+            res.sendStatus(401);
         }
-        //let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        //if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-        console.log(user);
-        var token = jwt.sign({ id: user.id }, config.secret, {
-            expiresIn: 86400 // expires in 24 hours
-        });
-        res.status(200).send({ auth: true, token: token });
-    }).catch( function(err) {
-        console.log(err);
+    }
+
+    loggingUserIn().then( () => {
+        console.log('zrobione');
+
+    }).catch( (err) => {
+        console.log('coś się zjebało', err);
     });
 });
 
 router.get('/', function(req, res) {
-    dbPool.query('SELECT * FROM users WHERE id = 78').then( (err, user) => {
+    dbPool.query('SELECT * FROM users WHERE id = 1').then( (err, user) => {
         console.log(user)
         res.status(200).send(user);
     })

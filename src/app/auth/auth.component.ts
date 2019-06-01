@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthModel } from '../core';
 import { AuthService } from './auth.service';
 
@@ -14,7 +14,10 @@ export class AuthComponent implements OnInit {
     authForm: FormGroup;
     authModel = AuthModel;
 
-    constructor(private fb: FormBuilder, private authService: AuthService) {
+    constructor(private fb: FormBuilder,
+                private authService: AuthService,
+                private router: Router
+                ) {
         this.createForm();
     }
 
@@ -24,13 +27,23 @@ export class AuthComponent implements OnInit {
 
     createForm() {
         this.authForm = this.fb.group({
-            username : ['', Validators.required],
+            login : ['', Validators.required],
             password : ['', Validators.required]
         });
     }
 
     login() {
         console.log(this.authForm.value);
-        this.authService.sendLogin(this.authForm.value);
+        const val = this.authForm.value;
+
+        if (val.login && val.password) {
+            this.authService.login(val.login, val.password)
+                .subscribe(
+                    () => {
+                        console.log("User is logged in");
+                        this.router.navigateByUrl('/');
+                    }
+                );
+        }
     }
 }
