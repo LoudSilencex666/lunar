@@ -16,6 +16,7 @@ import { GroupsModule } from './groups/groups.module';
 import { StatsModule } from './stats/stats.module';
 import { SubjectsModule } from './subjects/subjects.module';
 import { UsersModule } from './users/users.module';
+import { MessagesModule } from './messages/messages.module';
 
 
 
@@ -34,6 +35,7 @@ import { UsersModule } from './users/users.module';
       AuthModule,
       HomeModule,
       NewsModule,
+      MessagesModule,
       ProfileModule,
       GroupsModule,
       StatsModule,

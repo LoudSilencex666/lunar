@@ -15,6 +15,7 @@ const login = require('./routes/login');
 const news = require('./routes/news');
 const stats = require('./routes/stats');
 const subjects = require('./routes/subjects');
+const messages = require('./routes/messages');
 
 app.use(logger('common'));
 app.use(cors());
@@ -27,6 +28,7 @@ app.use('/login', login);
 app.use('/news', news);
 app.use('/stats', stats);
 app.use('/subjects', subjects);
+app.use('/messages', messages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

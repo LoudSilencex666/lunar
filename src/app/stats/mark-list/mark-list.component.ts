@@ -5,7 +5,7 @@ import { Marks, Subjects } from '../../core';
 
 
 @Component({
-    selector: 'app-home-marklist',
+    selector: 'app-stats-marklist',
     templateUrl: './mark-list.component.html',
     styleUrls: ['./mark-list.component.css']
 })
