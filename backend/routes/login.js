@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
             });
 
             console.log(accessToken);
-            res.status(200).cookie("SESSIONID", accessToken, {});
+            res.status(200).cookie("SESSIONID2", accessToken, {}).end();
         } else {
             res.sendStatus(401);
         }

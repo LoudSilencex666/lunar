@@ -9,10 +9,10 @@ export class AuthGuardService implements CanActivate {
     constructor(private router: Router, private cookieService: CookieService) {}
 
     isAuthenticated(): boolean {
-        if(this.cookieService.check('SESSIONID')) {
-        const sessionCookie = this.cookieService.get('SESSIONID');
-        console.log(sessionCookie);
-        return true;
+        if(this.cookieService.check('SESSIONID2')) {
+            const sessionCookie = this.cookieService.get('SESSIONID2');
+            console.log(sessionCookie);
+            return true;
         } else {
             console.log('nie ma takiego ciastka');
             return false;
