@@ -16,13 +16,13 @@ export class AuthComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private authService: AuthService,
-                private router: Router
-                ) {
+                private router: Router) {
+
         this.createForm();
     }
 
     ngOnInit() {
-        console.log(this.authForm.value);
+
     }
 
     createForm() {
@@ -40,8 +40,8 @@ export class AuthComponent implements OnInit {
             this.authService.login(val.login, val.password)
                 .subscribe(
                     () => {
-                        console.log("User is logged in");
-                        this.router.navigateByUrl('/');
+                        console.log('User is logged in');
+                        // this.router.navigateByUrl('/');
                     }
                 );
         }

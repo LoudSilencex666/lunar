@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ApiService, NewsServcie, StatsService, SubjectService } from './services';
 import { MessagesService } from './services/messages.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { MessagesService } from './services/messages.service';
     NewsServcie,
     StatsService,
     SubjectService,
-    MessagesService
+    MessagesService,
+    CookieService
   ],
   declarations: []
 })

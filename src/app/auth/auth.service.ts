@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { ApiService, AuthModel } from '../core';
+import { environment } from '../../environments/environment';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -13,16 +14,8 @@ export class AuthService {
         private apiService: ApiService
     ) {}
 
-    sendLogin(authForm) {
-        return this.apiService.post('/login', {user: authForm}).subscribe(
-        (data: any[]) => {
-            console.log(authForm);
-            console.log(data);
-        });
-    }
-
-    login(login:string, password:string ) {
-        return this.http.post<AuthModel>('http://localhost:3000/login', {login, password})
+    login(login: string, password: string ) {
+        return this.http.post<AuthModel>(`${environment.api_url}/login`, {login, password}, {withCredentials: true});
             // this is just the HTTP call,
             // we still need to handle the reception of the token
 

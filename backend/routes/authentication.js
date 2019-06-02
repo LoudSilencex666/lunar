@@ -9,7 +9,7 @@ const config = require('../config');
 
 const findUserByLogin = require('../helpers/findUserByLogin');
 
-/* Login */
+/* authentication */
 
 router.post('/', function(req, res) {
     const login = req.body.login;
@@ -41,17 +41,6 @@ router.post('/', function(req, res) {
     }).catch( (err) => {
         console.log('coś się zjebało', err);
     });
-});
-
-router.get('/', function(req, res) {
-    dbPool.query('SELECT * FROM users WHERE id = 1').then( (err, user) => {
-        console.log(user)
-        res.status(200).send(user);
-    })
-    //console.log('xD');
-
-    //res.status(200).json(zipa, '111');
-
 });
 
 module.exports = router;

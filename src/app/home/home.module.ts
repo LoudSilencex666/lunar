@@ -9,6 +9,7 @@ import { ChartComponent } from './chart/chart.component';
 import { NbrowserComponent } from './news_browser/nbrowser.component';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core';
+import { AuthGuardService } from '../core/services/auth-guard.service';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CoreModule } from '../core';
         NbrowserComponent
     ],
     providers: [
+        AuthGuardService
     ]
 })
 

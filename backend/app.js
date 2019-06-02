@@ -6,11 +6,15 @@ const cookieParser = require('cookie-parser');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+// important for CORS
+const allowedOrigins = ['http://localhost:4200'];
+
 // Create global app object
 var con = require('./dbconnect');
 const app = express();
 
 const home = require('./routes/home');
+const authentication = require('./routes/authentication');
 const login = require('./routes/login');
 const news = require('./routes/news');
 const stats = require('./routes/stats');
@@ -18,12 +22,22 @@ const subjects = require('./routes/subjects');
 const messages = require('./routes/messages');
 
 app.use(logger('common'));
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true)
+        } else {
+            callback(new Error(`Origin: ${origin} is now allowed`))
+        }
+    }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', home);
+app.use('/', authentication);
 app.use('/login', login);
 app.use('/news', news);
 app.use('/stats', stats);
