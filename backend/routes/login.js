@@ -28,8 +28,9 @@ router.post('/', function(req, res) {
                 subject: userId
             });
 
-            console.log(accessToken);
-            res.status(200).cookie("SESSIONID2", accessToken, {}).end();
+            const cookieExpDate = 24 * 60 * 60 * 100;
+            res.status(200).cookie(config.cookieSessionId, accessToken, {expires: new Date(Date.now() + cookieExpDate)}).end();
+            console.log(res.getHeaders());
         } else {
             res.sendStatus(401);
         }

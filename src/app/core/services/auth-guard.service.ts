@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -9,8 +9,8 @@ export class AuthGuardService implements CanActivate {
     constructor(private router: Router, private cookieService: CookieService) {}
 
     isAuthenticated(): boolean {
-        if(this.cookieService.check('SESSIONID2')) {
-            const sessionCookie = this.cookieService.get('SESSIONID2');
+        if(this.cookieService.check(environment.cookieSession)) {
+            const sessionCookie = this.cookieService.get(environment.cookieSession);
             console.log(sessionCookie);
             return true;
         } else {

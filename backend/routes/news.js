@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dbPool = require('../dbconnect')
+const dbPool = require('../dbconnect');
 
 router.get('/', function(req, res) {
     dbPool.query('SELECT * FROM news').then( (news) => {

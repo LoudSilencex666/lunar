@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    api_url: 'podaj linka do api'
+    api_url: 'podaj linka do api',
+    cookieSession: 'cookieSessionName'
 };
 
 /*

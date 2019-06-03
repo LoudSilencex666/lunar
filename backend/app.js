@@ -6,15 +6,17 @@ const cookieParser = require('cookie-parser');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const authTokenVerify = require('./middlewares/authTokenVerify');
+
 // important for CORS
-const allowedOrigins = ['http://localhost:4200'];
+const allowedOrigins = ['http://localhost:4200', 'http://localhost:3000'];
 
 // Create global app object
 var con = require('./dbconnect');
 const app = express();
 
 const home = require('./routes/home');
-const authentication = require('./routes/authentication');
+const test = require('./routes/test');
 const login = require('./routes/login');
 const news = require('./routes/news');
 const stats = require('./routes/stats');
@@ -22,6 +24,10 @@ const subjects = require('./routes/subjects');
 const messages = require('./routes/messages');
 
 app.use(logger('common'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {
@@ -32,17 +38,14 @@ app.use(cors({
         }
     }
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
-app.use('/', home);
-app.use('/', authentication);
+app.use('/', authTokenVerify, home);
+app.use('/test', authTokenVerify, test);
 app.use('/login', login);
-app.use('/news', news);
-app.use('/stats', stats);
-app.use('/subjects', subjects);
-app.use('/messages', messages);
+app.use('/news', authTokenVerify, news);
+app.use('/stats', authTokenVerify, stats);
+app.use('/subjects', authTokenVerify, subjects);
+app.use('/messages', authTokenVerify, messages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

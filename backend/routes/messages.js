@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dbPool = require('../dbconnect')
+const dbPool = require('../dbconnect');
 
 let id;
 

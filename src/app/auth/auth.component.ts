@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
                 .subscribe(
                     () => {
                         console.log('User is logged in');
-                        // this.router.navigateByUrl('/');
+                        this.router.navigateByUrl('/');
                     }
                 );
         }
