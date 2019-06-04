@@ -16,13 +16,14 @@ var con = require('./dbconnect');
 const app = express();
 
 const home = require('./routes/home');
-const test = require('./routes/test');
 const login = require('./routes/login');
+const users = require('./routes/users');
 const news = require('./routes/news');
 const stats = require('./routes/stats');
 const subjects = require('./routes/subjects');
 const messages = require('./routes/messages');
 const groups = require('./routes/groups');
+const test = require('./routes/test');
 
 app.use(logger('common'));
 
@@ -41,13 +42,14 @@ app.use(cors({
 }));
 
 app.use('/', home);
-app.use('/test', test);
 app.use('/login', login);
+app.use('/users', users);
 app.use('/news', news);
 app.use('/stats', stats);
 app.use('/groups', groups);
 app.use('/subjects', subjects);
 app.use('/messages', messages);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

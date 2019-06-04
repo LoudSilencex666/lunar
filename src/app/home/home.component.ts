@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+
+import { UserService } from '../core/services/user.service';
+
 
 @Component({
     selector: 'app-home',
@@ -8,22 +10,18 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private userService: UserService
     ) {}
 
-    testquery() {
-        return this.http.get(`${environment.api_url}/test`, {withCredentials: true});
+    ngOnInit() {
+        // this.userService.getUserData().subscribe((user) => {
+        //     console.log(user);
+        // })
+
     }
 
-    test() {
-        this.testquery()
-            .subscribe(
-                (data) => {
-                    console.log(data);
-                }
-            );
-    }
 }

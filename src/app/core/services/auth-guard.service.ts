@@ -11,10 +11,9 @@ export class AuthGuardService implements CanActivate {
     isAuthenticated(): boolean {
         if (this.cookieService.check(environment.cookieSession)) {
             const sessionCookie = this.cookieService.get(environment.cookieSession);
-            console.log(sessionCookie);
             return true;
         } else {
-            console.log('nie ma takiego ciastka');
+            console.log('session cookie does not exist');
             return false;
         }
     }
