@@ -22,6 +22,7 @@ const news = require('./routes/news');
 const stats = require('./routes/stats');
 const subjects = require('./routes/subjects');
 const messages = require('./routes/messages');
+const groups = require('./routes/groups');
 
 app.use(logger('common'));
 
@@ -44,6 +45,7 @@ app.use('/test', authTokenVerify, test);
 app.use('/login', login);
 app.use('/news', authTokenVerify, news);
 app.use('/stats', authTokenVerify, stats);
+app.use('/groups',authTokenVerify, groups);
 app.use('/subjects', authTokenVerify, subjects);
 app.use('/messages', authTokenVerify, messages);
 

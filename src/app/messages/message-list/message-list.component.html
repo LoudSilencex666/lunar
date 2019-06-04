@@ -1,3 +1,8 @@
-<div class="content">
-    
+<div class="list">
+    <div class="content" *ngFor="let message of messages">
+        {{ message.title }}
+        {{ message.content }}
+        {{ message.creation_date | date:'shortDate' }}
+        {{ message.author }}
+    </div>
 </div>

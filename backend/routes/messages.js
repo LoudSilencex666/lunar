@@ -14,8 +14,9 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    dbPool.query('SELECT * FROM `messages` WHERE user_id = "'+ id +'";').then( (news) => {
-        res.status(200).json(news);
+    dbPool.query('SELECT * FROM `messages` WHERE user_id = "'+ id +'";').then( (messages) => {
+        console.log(messages);
+        res.status(200).json(messages);
     }).catch( function(err) {
         console.log(err);
     })
@@ -26,7 +27,7 @@ router.post('/send', function(req, res) {
     console.log(message);
     res.status(200).json({
         info: 'Message recieved'
-    }).then(dbPool.query('INSERT INTO `messages` (`title`, `content`, `creation_date`, `author`, `user_id`) VALUES (`'+ message.title +'`, `'+ message.content +'`, `'+ message.creation_date +'`, `'+ message.author +'`, `'+ message.user_id +'`)'))
+    }).then(dbPool.query('INSERT INTO `messages` (`title`, `content`, `author`, `user_id`) VALUES (`'+ message.title +'`, `'+ message.content +'`, `'+ message.author +'`, `'+ message.user_id +'`)'))
     .then( (message) =>{
         console.log(message);
     }).catch( function(err){
