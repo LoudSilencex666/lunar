@@ -2,18 +2,20 @@ const express = require('express');
 const router = express.Router();
 const dbPool = require('../dbconnect');
 
+const authTokenVerify = require('../middlewares/authTokenVerify');
+
 let id;
 
 let message = {};
 
-router.post('/', function(req, res) {
+router.post('/', authTokenVerify, function(req, res) {
     id = req.body.id;
     res.status(201).json({
         info: 'Id recieved'
     })
 });
 
-router.get('/', function(req, res) {
+router.get('/', authTokenVerify, function(req, res) {
     dbPool.query('SELECT * FROM `messages` WHERE user_id = "'+ id +'";').then( (messages) => {
         console.log(messages);
         res.status(200).json(messages);
@@ -22,7 +24,7 @@ router.get('/', function(req, res) {
     })
 });
 
-router.post('/send', function(req, res) {
+router.post('/send', authTokenVerify, function(req, res) {
     message = req.body;
     console.log(message);
     res.status(200).json({

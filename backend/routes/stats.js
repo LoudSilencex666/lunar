@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const dbPool = require('../dbconnect');
 
+const authTokenVerify = require('../middlewares/authTokenVerify');
+
 let id;
 
-router.post('/', function(req, res) {
+router.post('/', authTokenVerify, function(req, res) {
     id = req.body.id;
     console.log(id);
     res.status(201).json({
@@ -13,7 +15,7 @@ router.post('/', function(req, res) {
 });
 
 
-router.get('/', function(req, res) {
+router.get('/', authTokenVerify, function(req, res) {
     dbPool.query('SELECT * FROM marks WHERE user_id = "'+ id +'";').then( (marks) => {
         console.log(marks);
         if (marks.length > 0) {

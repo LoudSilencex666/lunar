@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const dbPool = require('../dbconnect');
 
-router.get('/', function(req, res) {
+const authTokenVerify = require('../middlewares/authTokenVerify');
+
+
+router.get('/', authTokenVerify, function(req, res) {
     dbPool.query('SELECT * FROM `groups`').then((groups) => {
         console.log(groups);
         res.status(200).json(groups);

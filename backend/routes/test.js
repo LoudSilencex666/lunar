@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const dbPool = require('../dbconnect');
 
+const authTokenVerify = require('../middlewares/authTokenVerify');
+
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', authTokenVerify, function(req, res) {
     dbPool.query('SELECT * FROM users').then( result =>{
         console.log(result);
     }).then( () => {

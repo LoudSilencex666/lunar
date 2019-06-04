@@ -40,14 +40,14 @@ app.use(cors({
     }
 }));
 
-app.use('/', authTokenVerify, home);
-app.use('/test', authTokenVerify, test);
+app.use('/', home);
+app.use('/test', test);
 app.use('/login', login);
-app.use('/news', authTokenVerify, news);
-app.use('/stats', authTokenVerify, stats);
-app.use('/groups',authTokenVerify, groups);
-app.use('/subjects', authTokenVerify, subjects);
-app.use('/messages', authTokenVerify, messages);
+app.use('/news', news);
+app.use('/stats', stats);
+app.use('/groups', groups);
+app.use('/subjects', subjects);
+app.use('/messages', messages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
