@@ -1,0 +1,19 @@
+<div class= form_container>
+    <form id="message" class="message" [formGroup]="messageForm" (ngSubmit)="send()">
+        <select formControlName="groups" id="groups">
+            <option *ngFor="let group of groups" [value]="group.id">
+                {{ group.name }}
+            </option>
+        </select>
+        <select formControlName="user_id" id="user_id"> 
+            <ng-container *ngFor="let user of users">
+                <option  [ngValue]="user.id">
+                    {{ user.name }} {{ user.lastname }}
+                </option>
+            </ng-container>
+        </select>
+        <input type="text" name="message-title" placeholder="Title" formControlName="title">
+        <input type="text" name="message-content" placeholder="Content" formControlName="content">
+        <input type="submit" value="submit">
+    </form>
+</div>

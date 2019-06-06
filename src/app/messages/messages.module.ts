@@ -8,6 +8,7 @@ import { MessageSendComponent } from './message-send/message-send.component';
 
 import { SharedModule } from '../shared';
 import { CoreModule } from '../core';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { CoreModule } from '../core';
         CommonModule,
         SharedModule,
         MessagesRoutingModule,
-        CoreModule
+        CoreModule,
+        FormsModule
     ],
     declarations: [
       MessagesComponent,

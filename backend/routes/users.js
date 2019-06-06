@@ -5,11 +5,12 @@ const dbPool = require('../dbconnect');
 const authTokenVerify = require('../middlewares/authTokenVerify');
 
 router.get('/', authTokenVerify, function(req, res) {
-    dbPool.query('SELECT * FROM users').then( result =>{
-        console.log(result);
-    }).then( () => {
-        res.status(200).send("chuj w to");
-    });
+    dbPool.query('SELECT * FROM users').then( (users) => {
+        console.log(users);
+        res.status(200).json(users);
+    }).catch( function(err) {
+        console.log(err);
+    })
 });
 
 module.exports = router;

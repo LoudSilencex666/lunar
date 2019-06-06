@@ -25,14 +25,10 @@ constructor(
             this.subjects = data;
         });
 
-        this.statsService.sendId('3')
-        .subscribe((message) => {
-            console.log(message);
-            this.statsService.getUserContent()
-            .subscribe((data: Marks[]) => {
-                console.log(data);
-                this.marks = data;
+        this.statsService.getUserContent()
+        .subscribe((data: Marks[]) => {
+            console.log(data);
+            this.marks = data;
             });
-        });
     }
 }

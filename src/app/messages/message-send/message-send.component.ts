@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Messages, MessagesService } from '../../core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Messages, MessagesService, GroupsService, Groups, UsersService, UserModel } from '../../core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-message-messagesend',
@@ -11,23 +13,51 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MessageSendComponent implements OnInit {
     messageForm: FormGroup;
     message: Messages[];
+    groups: Groups[];
+    users: UserModel[];
+    value: any;
 
 constructor(
+    private usersService: UsersService,
+    private groupsService: GroupsService,
     private messagesService: MessagesService,
-    private formBuilder: FormBuilder) {
-        this.createForm();
+    private formBuilder: FormBuilder) {}
+
+    ngOnInit() {
+        this.groupsService.getGroups()
+        .subscribe((data: Groups[]) => {
+            console.log(data);
+            this.groups = data;
+        });
+
+        this.messageForm = this.formBuilder.group({
+            title: [''],
+            content: [''],
+            user_id: [''],
+            groups: ['']
+        });
+
+        this.onChanges();
     }
 
-    ngOnInit() {}
-
-    createForm() {
-        this.messageForm = this.formBuilder.group({
-            title: ['', Validators.required],
-            content: ['', Validators.required],
-            author: ['', Validators.required],
-            user_id: ['', Validators.required]
+    onChanges() {
+        this.messageForm.get('groups').valueChanges
+        .subscribe((value) => {
+            this.value = +value;
+            console.log(typeof this.value);
+            this.usersService.getUsers()
+            .subscribe((users: UserModel[]) => {
+                this.users = users.filter(val => val.group_id === this.value);
+                console.log(this.users);
+            });
         });
     }
 
-    send() {}
+    send() {
+        this.messagesService.sendMessage(this.messageForm.value)
+        .subscribe((info) => {
+            console.log(info);
+        });
+    }
+
 }

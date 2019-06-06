@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class StatsService {
+export class UsersService {
     constructor(private http: HttpClient) {}
 
-    getUserContent() {
-        return this.http.get(`${environment.api_url}/stats`, {withCredentials: true});
+    getUsers() {
+        return this.http.get(`${environment.api_url}/users`, {withCredentials: true});
     }
 }

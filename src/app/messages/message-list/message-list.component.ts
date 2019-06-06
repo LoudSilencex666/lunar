@@ -14,14 +14,10 @@ constructor(
     private messagesService: MessagesService) {}
 
     ngOnInit() {
-        this.messagesService.sendId('3')
-        .subscribe((info) => {
-            console.log(info);
-            this.messagesService.getMessages()
-            .subscribe((data: Messages[]) => {
-                console.log(data);
-                this.messages = data;
+        this.messagesService.getMessages()
+        .subscribe((data: Messages[]) => {
+            console.log(data);
+            this.messages = data;
             });
-        });
     }
 }
