@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { /*FormsModule,*/ ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
+        CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule
-        // FormsModule
+        RouterModule,
+        FormsModule
     ],
     declarations: [
         SidebarComponent,
@@ -22,8 +24,8 @@ import { RouterModule } from '@angular/router';
         SidebarComponent,
         HeaderComponent,
         FooterComponent,
-        HttpClientModule
-        // FormsModule
+        HttpClientModule,
+        FormsModule
     ]
 })
 

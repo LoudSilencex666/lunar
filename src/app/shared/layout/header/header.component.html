@@ -1,5 +1,8 @@
-<div class="logo"><img src="assets/images/logo/logo_placeholder.png" alt="lunar logo"></div>
-<div class="type">Accout Type</div>
-<div class="name">Account Name</div>
-<div class="last-login-date">Last Login Date</div>
-<div routerLink="/" class="home">Home</div>
+<div class="header-wrapper" *ngIf="userData | async; let userData; else loading">
+    <div class="logo"><img src="assets/images/logo/logo_placeholder.png" alt="lunar logo"></div>
+    <div class="type">{{ userData.role_id }}</div>
+    <div class="name">{{ userData.name }} {{ userData.lastname }}</div>
+    <div class="last-login-date">{{ userData.last_online }}</div>
+    <div routerLink="/" class="home">Home</div>
+</div>
+<ng-template #loading>Loading User Data...</ng-template>

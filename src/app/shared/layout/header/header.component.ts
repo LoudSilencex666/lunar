@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { UserService } from '../../../core';
+import { UserModel as User } from '../../../core';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-layout-header',
@@ -6,4 +12,16 @@ import { Component } from '@angular/core';
     styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {}
+export class HeaderComponent implements OnInit {
+    constructor(
+        private userService: UserService
+    ) {}
+
+    userData: Observable<User>;
+
+    ngOnInit() {
+        this.userData = this.userService.getUserData().pipe(share());
+        // this.userData = usersData[0];
+        console.log(this.userData);
+    }
+}

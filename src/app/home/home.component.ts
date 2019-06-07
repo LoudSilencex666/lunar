@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { UserService } from '../core/services/user.service';
+import { UserService } from '../core';
 
 
 @Component({
@@ -19,9 +19,9 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.userService.getUserData().subscribe((data) => {
-            console.log(data)
-        });
+        // this.userService.getUserData().subscribe((data) => {
+        //     console.log(data)
+        // });
         // To jeszcze nie działa
     }
 }

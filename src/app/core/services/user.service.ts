@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiService } from './api.service';
-import { environment } from '../../../environments/environment';
 
 import { UserModel as User } from '../models/user.model';
 import { Observable } from 'rxjs';
@@ -13,8 +12,8 @@ export class UserService {
         private apiSercive: ApiService
         ) {}
 
-    getUserData() {
-        return this.apiSercive.get(`/users`);
+    getUserData(): Observable<User> {
+        return this.apiSercive.get(`/users/getuser`);
     }
 
 }
