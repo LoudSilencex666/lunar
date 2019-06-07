@@ -16,9 +16,10 @@ export class ApiService {
         return  throwError(error.error);
     }
 
-    get(path: string, params: HttpParams = new HttpParams().set('withCredentials', 'true')): Observable<any> {
-        return this.http.get(`${environment.api_url}${path}`, { params })
-        .pipe(catchError(this.formatErrors));
+    get(path: string): Observable<any> {
+        return this.http.get(
+            `${environment.api_url}${path}`, { withCredentials: true }
+        ).pipe(catchError(this.formatErrors));
     }
 
     put(path: string, body: Object = {}): Observable<any> {

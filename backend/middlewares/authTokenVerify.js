@@ -5,9 +5,10 @@ function authTokenVerify(req, res, next) {
     const cookie = config.cookieSessionId
     const token = req.cookies[cookie];
 
-    if (!token)
+    if (!token) {
+        console.log(req.headers);
         return res.status(403).send({ auth: false, message: 'No token provided.' });
-
+    }
     jwt.verify(token, config.secret, function(err, decoded) {
         if (err)
         return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });

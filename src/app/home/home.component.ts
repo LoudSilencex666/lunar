@@ -19,12 +19,9 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.userService.getUserData();
-        // To jeszcze nie działa
-    }
-
-    zipa() {
-        return this.userService.getUserData();
+        this.userService.getUserData().subscribe((data) => {
+            console.log(data)
+        });
         // To jeszcze nie działa
     }
 }

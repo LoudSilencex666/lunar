@@ -14,9 +14,7 @@ export class UserService {
         ) {}
 
     getUserData() {
-        // let test = this.apiSercive.get(`/users`);
-        // console.log(test);
-        // return test;
+        return this.apiSercive.get(`/users`);
     }
 
 }
