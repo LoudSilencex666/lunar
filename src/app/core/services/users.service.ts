@@ -6,7 +6,11 @@ import { environment } from '../../../environments/environment';
 export class UsersService {
     constructor(private http: HttpClient) {}
 
-    getUsers() {
+    getCurrentUser() {
         return this.http.get(`${environment.api_url}/users`, {withCredentials: true});
+    }
+
+    getUserList() {
+        return this.http.get(`${environment.api_url}/user_list`, {withCredentials: true});
     }
 }

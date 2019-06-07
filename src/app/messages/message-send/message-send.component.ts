@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SentMessage, MessagesService, GroupsService, Groups, UsersService, UserModel } from '../../core';
+import { SentMessage, MessagesService, GroupsService, Groups, UsersService, Users } from '../../core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,8 @@ export class MessageSendComponent implements OnInit {
     messageForm: FormGroup;
     message: SentMessage[];
     groups: Groups[];
-    users: UserModel[];
+    users: Users[];
+    currentUser: any;
     value: any;
 
 constructor(
@@ -24,9 +25,14 @@ constructor(
 
     ngOnInit() {
         this.groupsService.getGroups()
-        .subscribe((data: Groups[]) => {
-            console.log(data);
-            this.groups = data;
+        .subscribe((groups: Groups[]) => {
+            console.log(groups);
+            this.groups = groups;
+        });
+
+        this.usersService.getCurrentUser()
+        .subscribe((user: Users[]) => {
+            this.currentUser = user[0].id;
         });
 
         this.messageForm = this.formBuilder.group({
@@ -44,9 +50,9 @@ constructor(
         .subscribe((value) => {
             this.value = +value;
             console.log(typeof this.value);
-            this.usersService.getUsers()
-            .subscribe((users: UserModel[]) => {
-                this.users = users.filter(val => val.group_id === this.value);
+            this.usersService.getUserList()
+            .subscribe((users: Users[]) => {
+                this.users = users.filter(val => val.group_id === this.value && val.id !== this.currentUser);
                 console.log(this.users);
             });
         });
