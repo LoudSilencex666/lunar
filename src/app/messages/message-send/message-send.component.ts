@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Messages, MessagesService, GroupsService, Groups, UsersService, UserModel } from '../../core';
+import { SentMessage, MessagesService, GroupsService, Groups, UsersService, UserModel } from '../../core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-message-messagesend',
@@ -12,7 +11,7 @@ import { filter } from 'rxjs/operators';
 
 export class MessageSendComponent implements OnInit {
     messageForm: FormGroup;
-    message: Messages[];
+    message: SentMessage[];
     groups: Groups[];
     users: UserModel[];
     value: any;
