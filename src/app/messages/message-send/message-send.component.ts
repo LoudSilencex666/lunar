@@ -32,7 +32,7 @@ constructor(
 
         this.usersService.getCurrentUser()
         .subscribe((user: Users[]) => {
-            this.currentUser = user[0].id;
+            this.currentUser = user['id'];
         });
 
         this.messageForm = this.formBuilder.group({

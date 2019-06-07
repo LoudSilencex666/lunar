@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../../core';
-import { UserModel as User } from '../../../core';
+import { Users as User } from '../../../core';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
