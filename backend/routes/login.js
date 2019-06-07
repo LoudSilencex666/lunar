@@ -30,14 +30,12 @@ router.post('/', function(req, res) {
 
             const cookieExpDate = 24 * 60 * 60 * 100;
             res.status(200).cookie(config.cookieSessionId, accessToken, {expires: new Date(Date.now() + cookieExpDate)}).end();
-            console.log(res.getHeaders());
         } else {
             res.sendStatus(401);
         }
     }
 
     loggingUserIn().then( () => {
-        console.log('zrobione');
 
     }).catch( (err) => {
         console.log('coś się zjebało', err);
@@ -45,10 +43,10 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    dbPool.query('SELECT * FROM users WHERE id = 1').then( (err, user) => {
-        console.log(user)
-        res.status(200).send(user);
-    })
+
+        console.log('chuj');
+        res.status(200)
+
     //console.log('xD');
 
     //res.status(200).json(zipa, '111');

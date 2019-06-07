@@ -13,4 +13,13 @@ router.get('/', authTokenVerify, function(req, res) {
     })
 });
 
+router.post('/', authTokenVerify, function(req, res) {
+    dbPool.query('SELECT * FROM users').then( (users) => {
+        console.log(users);
+        res.status(200).json(users);
+    }).catch( function(err) {
+        console.log(err);
+    })
+});
+
 module.exports = router;
