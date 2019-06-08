@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, delay } from 'rxjs/operators';
 
 @Injectable()
 export class MessagesService {
@@ -24,7 +24,7 @@ export class MessagesService {
 
     sendMessage(message) {
         return this.http.post<{info: string}>(`${environment.api_url}/messages`, {message}, {withCredentials: true})
-        .pipe(
+        .pipe(delay(1000),
             tap(() => {
                 this._refreshNeeded$.next();
             })

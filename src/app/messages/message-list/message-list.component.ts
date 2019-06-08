@@ -24,7 +24,7 @@ constructor(
     }
 
     private getMessages() {
-    this.messagesService.getSentMessages()
+        this.messagesService.getSentMessages()
         .subscribe((s_messages: SentMessage[]) => {
             console.log(s_messages);
             this.sent_messages = s_messages;
@@ -34,6 +34,6 @@ constructor(
         .subscribe((r_messages: RecievedMessage[]) => {
             console.log(r_messages);
             this.recieved_messages = r_messages;
-            });
+        });
     }
 }

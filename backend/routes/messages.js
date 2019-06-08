@@ -19,7 +19,7 @@ router.post('/', authTokenVerify, function(req, res) {
 });
 
 router.get('/sent', authTokenVerify, function(req, res) {
-    dbPool.query('SELECT `title`, `content`,`creation_date`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.user_id;')
+    dbPool.query('SELECT `title`, `content`,`creation_date`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.user_id ORDER BY `creation_date` DESC;')
     .then((messages) => {
         console.log(messages);
         res.status(200).json(messages);
