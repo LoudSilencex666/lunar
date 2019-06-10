@@ -21,7 +21,5 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.userData = this.userService.getUserData().pipe(share());
-        // this.userData = usersData[0];
-        console.log(this.userData);
     }
 }
