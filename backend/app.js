@@ -18,7 +18,6 @@ const app = express();
 const home = require('./routes/home');
 const login = require('./routes/login');
 const users = require('./routes/users');
-const user_list = require('./routes/user_list');
 const news = require('./routes/news');
 const stats = require('./routes/stats');
 const subjects = require('./routes/subjects');
@@ -45,7 +44,6 @@ app.use(cors({
 app.use('/', home);
 app.use('/login', login);
 app.use('/users', users);
-app.use('/user_list', user_list);
 app.use('/news', news);
 app.use('/stats', stats);
 app.use('/groups', groups);

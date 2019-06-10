@@ -1,8 +1,16 @@
-<div class="list">
-    <div class="content" *ngFor="let message of messages">
-        {{ message.title }}
-        {{ message.content }}
-        {{ message.creation_date | date:'shortDate' }}
-        {{ message.name }} {{ message.lastname }}
+<div class="recieved">
+    <div class="content" *ngFor="let recieved of recieved_messages">
+        {{ recieved.title }}
+        {{ recieved.content }}
+        {{ recieved.creation_date | date:'shortDate' }}
+        {{ recieved.name }} {{ recieved.lastname }}
+    </div>
+</div>
+<div class="sent">
+    <div class="content" *ngFor="let sent of sent_messages">
+        {{ sent.title }}
+        {{ sent.content }}
+        {{ sent.creation_date | date:'shortDate' }}
+        {{ sent.name }} {{ sent.lastname }}
     </div>
 </div>

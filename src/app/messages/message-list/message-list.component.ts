@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecievedMessage, MessagesService } from '../../core';
+import { RecievedMessage, MessagesService, SentMessage } from '../../core';
 
 @Component({
     selector: 'app-messages-messagelist',
@@ -8,16 +8,32 @@ import { RecievedMessage, MessagesService } from '../../core';
 })
 
 export class MessageListComponent implements OnInit {
-    messages: RecievedMessage[];
+    recieved_messages: RecievedMessage[];
+    sent_messages: SentMessage[];
 
 constructor(
     private messagesService: MessagesService) {}
 
     ngOnInit() {
-        this.messagesService.getMessages()
-        .subscribe((data: RecievedMessage[]) => {
-            console.log(data);
-            this.messages = data;
-            });
+        this.messagesService.refreshNeeded$
+        .subscribe(() => {
+            this.getMessages();
+        });
+
+        this.getMessages();
+    }
+
+    private getMessages() {
+        this.messagesService.getSentMessages()
+        .subscribe((s_messages: SentMessage[]) => {
+            console.log(s_messages);
+            this.sent_messages = s_messages;
+        });
+
+        this.messagesService.getRecievedMessages()
+        .subscribe((r_messages: RecievedMessage[]) => {
+            console.log(r_messages);
+            this.recieved_messages = r_messages;
+        });
     }
 }
