@@ -1,6 +1,6 @@
 <div class="header-wrapper" *ngIf="userData | async; let userData; else loading">
     <div class="logo"><img src="assets/images/logo/logo_placeholder.png" alt="lunar logo"></div>
-    <div class="type">{{ userData.role_id }}</div>
+    <div class="type">{{ userData.role }}</div>
     <div class="name">{{ userData.name }} {{ userData.lastname }}</div>
     <div class="last-login-date">{{ userData.last_online }}</div>
     <div routerLink="/" class="home">Home</div>
