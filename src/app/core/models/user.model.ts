@@ -1,4 +1,4 @@
-export interface Users {
+export interface User {
     id: number;
     name: string;
     lastname: string;
@@ -7,5 +7,5 @@ export interface Users {
     last_online: Date;
     register_number: number;
     group_id: number;
-    role_id: number;
+    role: string;
 }

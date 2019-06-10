@@ -1,4 +1,4 @@
-export interface Marks {
+export interface Mark {
     id: number;
     value: number;
     weight: number;
