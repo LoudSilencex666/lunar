@@ -5,4 +5,3 @@ export * from './stats.service';
 export * from './subject.service';
 export * from './messages.service';
 export * from './groups.service';
-export * from './users.service';

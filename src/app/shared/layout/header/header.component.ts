@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../../core';
-import { Users as User } from '../../../core';
+import { User } from '../../../core';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
@@ -20,6 +20,6 @@ export class HeaderComponent implements OnInit {
     userData: Observable<User>;
 
     ngOnInit() {
-        this.userData = this.userService.getUserData().pipe(share());
+        this.userData = this.userService.getCurrentUser().pipe(share());
     }
 }
