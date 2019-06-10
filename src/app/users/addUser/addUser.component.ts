@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UserModel } from '../../core/models/user.model';
+import { User } from '../../core/models/user.model';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UsersService } from '../users.service';
 
 export class AddUserComponent {
     addUserForm: FormGroup;
-    authModel = UserModel;
+    authModel: User[];
 
     constructor(private fb: FormBuilder, private userService: UsersService) {
         this.createForm();

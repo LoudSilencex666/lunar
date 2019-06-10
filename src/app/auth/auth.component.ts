@@ -12,7 +12,7 @@ import { AuthService } from './auth.service';
 
 export class AuthComponent implements OnInit {
     authForm: FormGroup;
-    authModel = AuthModel;
+    authModel: AuthModel[];
 
     constructor(private fb: FormBuilder,
                 private authService: AuthService,
