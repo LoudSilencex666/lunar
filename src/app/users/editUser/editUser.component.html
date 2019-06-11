@@ -1,1 +1,27 @@
-<div>EDIT USERS</div>
+<div class="container">
+        <form id="editUser" class="editUser" [formGroup]="editUserForm">
+            <label for="name"> Name </label>
+            <input type="text" name="name" placeholder="Name" formControlName="name">
+            <label for="name"> Lastname </label>
+            <input type="text" name="lastname" placeholder="Lastname" formControlName="lastname">
+            <label for="name"> Login </label>
+            <input type="text" name="login" placeholder="Login" formControlName="login">
+            <label for="name"> Password </label>
+            <input type="password" name="password" placeholder="Password" formControlName="password">
+            <label for="name"> Number in class </label>
+            <input type="number" name="register-number" placeholder="1" formControlName="register_number">
+            <label for="name"> Class </label>
+            <input list="groups" name="group_id" formControlName="group_id">
+            <datalist id="groups">
+                <option> 1A </option>
+            </datalist>
+            <label for="name"> Role </label>
+            <input list="roles" name="role" formControlName="role">
+            <datalist id="roles">
+                <option> user </option>
+            </datalist>
+
+        </form>
+        <button (click)="editUser()">Edit User</button>
+    </div>
+

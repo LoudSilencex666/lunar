@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { User } from '../../core/models/user.model';
-import { UsersService } from '../users.service';
+import { User } from '../../core';
+import { UserService } from '../../core';
 
 @Component({
     selector: 'app-add-user',
@@ -11,20 +12,30 @@ import { UsersService } from '../users.service';
 
 export class AddUserComponent {
     addUserForm: FormGroup;
-    authModel: User[];
 
-    constructor(private fb: FormBuilder, private userService: UsersService) {
+    constructor(private fb: FormBuilder,
+                private userService: UserService,
+                private router: Router) {
+
         this.createForm();
     }
 
     createForm() {
         this.addUserForm = this.fb.group({
-            username : ['', Validators.required],
-            password : ['', Validators.required]
+            id : [null],
+            name : ['', Validators.required],
+            lastname : ['', Validators.required],
+            login : ['', Validators.required],
+            password : ['', Validators.required],
+            last_online : [null],
+            register_number : ['', Validators.required],
+            group_id : ['', Validators.required],
+            role : ['', Validators.required]
         });
     }
 
-    login(): void {
-        this.userService.addUser();
+
+    addUser(): void {
+        this.userService.addUser(this.addUserForm.value);
     }
 }

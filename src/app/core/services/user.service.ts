@@ -20,4 +20,16 @@ export class UserService {
         return this.apiSercive.get(`/users/getusers`);
     }
 
+    addUser(addUserData) {
+        return this.apiSercive.post(`/users/addUser`, {addUserData});
+    }
+
+    editUser(editUserData) {
+        return this.apiSercive.post(`/users/editUser`, {editUserData});
+    }
+
+    deleteUser(deleteUserData) {
+        return this.apiSercive.post(`/users/deleteUser`, {deleteUserData});
+    }
+
 }
