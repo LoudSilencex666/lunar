@@ -10,6 +10,8 @@ import { RecievedMessage, MessagesService, SentMessage } from '../../core';
 export class MessageListComponent implements OnInit {
     recieved_messages: RecievedMessage[];
     sent_messages: SentMessage[];
+    list: string;
+    activeMessage: any;
 
 constructor(
     private messagesService: MessagesService) {}
@@ -21,6 +23,9 @@ constructor(
         });
 
         this.getMessages();
+
+        this.activeMessage = [];
+        this.list = 'recieved';
     }
 
     private getMessages() {
@@ -35,5 +40,22 @@ constructor(
             console.log(r_messages);
             this.recieved_messages = r_messages;
         });
+    }
+
+    private switch_list(type: string) {
+        this.list = type;
+        this.activeMessage = [];
+    }
+
+    private getContent(i: number, type: string) {
+        if (type === 'sent') {
+            this.activeMessage = this.sent_messages[i];
+        } else if (type === 'recieved') {
+            this.activeMessage = this.recieved_messages[i];
+        }
+    }
+
+    private deleteMessage(id: number) {
+        console.log(id);
     }
 }
