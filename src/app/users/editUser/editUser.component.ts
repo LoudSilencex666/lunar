@@ -35,7 +35,7 @@ export class EditUserComponent {
     }
 
 
-    addUser(): void {
+    editUser(): void {
         this.userService.editUser(this.editUserForm.value);
     }
 }
