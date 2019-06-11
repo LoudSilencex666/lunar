@@ -1,10 +1,28 @@
 <div class="message_container">
-    <button>Recieved</button><button>Sent</button>
+    <button (click)="switch_list(type='recieved')">Recieved</button><button (click)="switch_list(type='sent')">Sent</button>
     <div class="message_list">
-
+        <div class="recieved" *ngIf="list === 'recieved'">
+            <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')">
+                {{ recieved.title }}
+                {{ recieved.creation_date | date:'shortDate' }}
+                {{ recieved.name }} {{ recieved.lastname }}
+                <button (click)="deleteMessage(recieved.id); $event.stopPropagation()">{{ recieved.id }}</button>
+            </div>
+        </div>
+        <div class="sent" *ngIf="list === 'sent'">
+            <div class="content" *ngFor="let sent of sent_messages; index as i" (click)="getContent(i, type='sent')">
+                {{ sent.title }}
+                {{ sent.creation_date | date:'shortDate' }}
+                {{ sent.name }} {{ sent.lastname }}
+                <button (click)="deleteMessage(sent.id); $event.stopPropagation()">{{ sent.id }}</button>
+            </div>
+        </div>
     </div>
     <div class="message_content">
-
+        {{ activeMessage.title }}
+        {{ activeMessage.content }}
+        {{ activeMessage.creation_date | date:'shortDate' }}
+        {{ activeMessage.name }} {{ activeMessage.lastname }}
     </div>
 </div>
 
@@ -15,19 +33,3 @@
 
 
 
-<div class="recieved">
-    <div class="content" *ngFor="let recieved of recieved_messages">
-        {{ recieved.title }}
-        {{ recieved.content }}
-        {{ recieved.creation_date | date:'shortDate' }}
-        {{ recieved.name }} {{ recieved.lastname }}
-    </div>
-</div>
-<div class="sent">
-    <div class="content" *ngFor="let sent of sent_messages">
-        {{ sent.title }}
-        {{ sent.content }}
-        {{ sent.creation_date | date:'shortDate' }}
-        {{ sent.name }} {{ sent.lastname }}
-    </div>
-</div>
