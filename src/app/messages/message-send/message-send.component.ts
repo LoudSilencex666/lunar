@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class MessageSendComponent implements OnInit {
     messageForm: FormGroup;
-    message: SentMessage[];
     groups: Group[];
     users: User[];
     currentUser: any;
@@ -62,6 +61,7 @@ constructor(
         this.messagesService.sendMessage(this.messageForm.value)
         .subscribe((info) => {
             console.log(info);
+            this.messageForm.reset();
         });
     }
 

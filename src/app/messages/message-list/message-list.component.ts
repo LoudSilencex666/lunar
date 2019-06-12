@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecievedMessage, MessagesService, SentMessage } from '../../core';
+import { RecievedMessage, MessagesService } from '../../core';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
     selector: 'app-messages-messagelist',
@@ -9,7 +10,7 @@ import { RecievedMessage, MessagesService, SentMessage } from '../../core';
 
 export class MessageListComponent implements OnInit {
     recieved_messages: RecievedMessage[];
-    sent_messages: SentMessage[];
+    sent_messages: RecievedMessage[];
     list: string;
     activeMessage: any;
 
@@ -30,7 +31,7 @@ constructor(
 
     private getMessages() {
         this.messagesService.getSentMessages()
-        .subscribe((s_messages: SentMessage[]) => {
+        .subscribe((s_messages: RecievedMessage[]) => {
             console.log(s_messages);
             this.sent_messages = s_messages;
         });
@@ -56,6 +57,9 @@ constructor(
     }
 
     private deleteMessage(id: number) {
-        console.log(id);
+        this.messagesService.deleteMessage(id)
+        .subscribe(() => {
+            this.getMessages();
+        }, (err) => console.log(err));
     }
 }

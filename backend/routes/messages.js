@@ -18,7 +18,7 @@ router.post('/', authTokenVerify, function(req, res) {
 });
 
 router.get('/sent', authTokenVerify, function(req, res) {
-    dbPool.query('SELECT messages.id, `title`, `content`, `creation_date`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.user_id WHERE messages.author = "'+ req.userId +'" ORDER BY `creation_date` DESC;')
+    dbPool.query('SELECT messages.id, `title`, `content`, `creation_date`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.user_id WHERE messages.author = ? ORDER BY `creation_date` DESC;', [req.userId])
     .then((messages) => {
         console.log(messages);
         res.status(200).json(messages);
@@ -28,7 +28,7 @@ router.get('/sent', authTokenVerify, function(req, res) {
 });
 
 router.get('/recieved', authTokenVerify, function(req, res) {
-    dbPool.query('SELECT messages.id, `title`, `content`, `creation_date`, `user_id`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.author WHERE user_id = "'+ req.userId +'" ORDER BY `creation_date` DESC;')
+    dbPool.query('SELECT messages.id, `title`, `content`, `creation_date`, `user_id`, users.name, users.lastname FROM `messages` INNER JOIN users ON users.id = messages.author WHERE user_id = ? ORDER BY `creation_date` DESC;', [req.userId])
     .then( (messages) => {
         console.log(messages);
         res.status(200).json(messages);
@@ -37,6 +37,15 @@ router.get('/recieved', authTokenVerify, function(req, res) {
     })
 });
 
+router.delete('/delete/:id', authTokenVerify, function(req, res) {
+    dbPool.query('DELETE FROM `messages` WHERE id = ?', [req.params.id])
+    .then(res.status(200).json({
+        info: 'Message deleted'
+    })
+    ).catch( function(err) {
+        console.log(err);
+    })
+});
 
 
 module.exports = router;
