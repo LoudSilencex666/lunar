@@ -1,25 +1,24 @@
 <div class="container">
     <form id="addUser" class="addUser" [formGroup]="addUserForm">
-        <label for="name"> Name </label>
+        <label for="name"> Name: </label>
         <input type="text" name="name" placeholder="Name" formControlName="name">
-        <label for="name"> Lastname </label>
+        <label for="name"> Lastname: </label>
         <input type="text" name="lastname" placeholder="Lastname" formControlName="lastname">
-        <label for="name"> Login </label>
+        <label for="name"> Login: </label>
         <input type="text" name="login" placeholder="Login" formControlName="login">
-        <label for="name"> Password </label>
+        <label for="name"> Password: </label>
         <input type="password" name="password" placeholder="Password" formControlName="password">
-        <label for="name"> Number in class </label>
+        <label for="name"> Number in class: </label>
         <input type="number" name="register-number" placeholder="1" formControlName="register_number">
-        <label for="name"> Class </label>
-        <input list="groups" name="group_id" formControlName="group_id">
-        <datalist id="groups">
+        <label for="name"> Class: </label>
+        <select name="group_id" formControlName="group_id">
             <option> 1A </option>
-        </datalist>
-        <label for="name"> Role </label>
-        <input list="roles" name="role" formControlName="role">
-        <datalist id="roles">
+        </select>
+        <label for="name"> Role: </label>
+        <select name="role" formControlName="role">
             <option> user </option>
-        </datalist>
+        </select>
+
 
     </form>
     <button (click)="addUser()">Add User</button>

@@ -20,9 +20,22 @@
     <div class="header">
         Users
     </div>
-    <div class="main">
-
+    <div class="main" >
+        <div class="all-groups">
+            <div class="groups-title">Class: </div>
+            <div>
+                <select name="group_id" (change)="activeGroup(s.value)" #s>
+                    <option *ngFor="let group of groups | async as groups;" [attr.id]="group.id"> {{ group.name }} </option>
+                </select>
+            </div>
+        </div>
+        <ul class="all-users">
+            <li *ngFor="let user of users | async as users; index as i; first as isFirst">
+                {{ i }} {{user.name}} {{user.lastname}}
+            </li>
+        </ul>
     </div>
+    <ng-template #loadingUsers>Loading Users...</ng-template>
 </div>
 
 <app-layout-footer></app-layout-footer>

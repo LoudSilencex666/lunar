@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared';
@@ -8,13 +9,12 @@ import { EditUserComponent } from './editUser/editUser.component';
 import { AddUserComponent } from './addUser/addUser.component';
 import { DeleteUserComponent } from './deleteUser/deleteUser.component';
 
-import { UsersService } from './users.service';
-
 
 
 
 @NgModule({
   imports: [
+    CommonModule,
     UsersRoutingModule,
     SharedModule
   ],
@@ -25,7 +25,7 @@ import { UsersService } from './users.service';
     EditUserComponent,
   ],
   providers: [
-      UsersService
+
   ]
 
 })

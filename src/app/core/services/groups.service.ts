@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+
+import { ApiService } from './api.service';
 
 @Injectable()
 export class GroupsService {
-    constructor(private http: HttpClient) {}
+    constructor(private apiSercive: ApiService) {}
 
     getGroups() {
-        return this.http.get(`${environment.api_url}/groups`, {withCredentials: true});
+        return this.apiSercive.get(`/groups`);
     }
 }
