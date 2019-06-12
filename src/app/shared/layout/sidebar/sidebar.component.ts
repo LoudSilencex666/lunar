@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-import {trigger, query, state, style, animate, transition} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { trigger, query, state, style, animate, transition} from '@angular/animations';
+
+import { UserService } from '../../../core';
+import { User } from '../../../core';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-layout-sidebar',
@@ -19,8 +25,26 @@ import {trigger, query, state, style, animate, transition} from '@angular/animat
     ]
 })
 
-export class SidebarComponent {
-    active = false;
+export class SidebarComponent implements OnInit{
+    constructor(
+        private userService: UserService
+    ) {}
+
+    active: Boolean = false;
+    userData: Observable<User>;
+    userRole: boolean;
+
+    ngOnInit() {
+        this.userData = this.userService.getCurrentUser().pipe(share());
+        this.userData.subscribe(user => {
+            if ( user.role !== 'user' ) {
+                this.userRole = true;
+            } else {
+                this.userRole = false;
+            }
+        });
+
+    }
 
     get sidebarState() {
         return this.active ? 'active' : 'inactive';

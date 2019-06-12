@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { User } from '../../core';
+import { UserService } from '../../core';
 
 @Component({
     selector: 'app-edit-user',
@@ -6,4 +10,32 @@ import { Component } from '@angular/core';
     styleUrls: ['./editUser.component.css']
 })
 
-export class EditUserComponent {}
+export class EditUserComponent {
+    editUserForm: FormGroup;
+
+    constructor(private fb: FormBuilder,
+                private userService: UserService,
+                private router: Router) {
+
+        this.createForm();
+    }
+
+    createForm() {
+        this.editUserForm = this.fb.group({
+            id : [null],
+            name : ['', Validators.required],
+            lastname : ['', Validators.required],
+            login : ['', Validators.required],
+            password : ['', Validators.required],
+            last_online : [null],
+            register_number : ['', Validators.required],
+            group_id : ['', Validators.required],
+            role : ['', Validators.required]
+        });
+    }
+
+
+    editUser(): void {
+        this.userService.editUser(this.editUserForm.value);
+    }
+}

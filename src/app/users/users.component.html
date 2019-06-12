@@ -1,10 +1,28 @@
 <app-layout-header></app-layout-header>
 <app-layout-sidebar></app-layout-sidebar>
 
-<a routerLink="./add" routerLinkActive="active" class="link">add</a>
-<a routerLink="./edit" routerLinkActive="active" class="link">edit</a>
-<a routerLink="./delete" routerLinkActive="active" class="link">delete</a>
+<div class="user-title">
+    User menu
+</div>
 
-<router-outlet></router-outlet>
+<div class="user-menu">
+    <div class="header">
+        <a routerLink="./add" class="link">Add user</a>
+        <a routerLink="./edit" class="link">Edit user</a>
+        <a routerLink="./delete" class="link">Delete user</a>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div class="users-list">
+    <div class="header">
+        Users
+    </div>
+    <div class="main">
+
+    </div>
+</div>
 
 <app-layout-footer></app-layout-footer>
