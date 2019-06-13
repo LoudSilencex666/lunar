@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 import { User } from '../../core';
 import { UserService } from '../../core';
+import { RolesService } from '../../core';
+import { GroupsService } from '../../core';
+import { Group } from '../../core';
 
 @Component({
     selector: 'app-add-user',
@@ -10,14 +16,23 @@ import { UserService } from '../../core';
     styleUrls: ['./addUser.component.css']
 })
 
-export class AddUserComponent {
+export class AddUserComponent implements OnInit{
     addUserForm: FormGroup;
+    groups: Observable<Group | Group[]>;
+    roles: Observable<string[]>;
 
     constructor(private fb: FormBuilder,
                 private userService: UserService,
-                private router: Router) {
+                private rolesService: RolesService,
+                private groupsService: GroupsService
+    ) {
 
         this.createForm();
+    }
+
+    ngOnInit() {
+        this.groups = this.groupsService.getGroups().pipe(share());
+        this.roles = this.rolesService.getRoles().pipe(share());
     }
 
     createForm() {
@@ -27,7 +42,7 @@ export class AddUserComponent {
             lastname : ['', Validators.required],
             login : ['', Validators.required],
             password : ['', Validators.required],
-            last_online : [null],
+            // last_online : [''],
             register_number : ['', Validators.required],
             group_id : ['', Validators.required],
             role : ['', Validators.required]
@@ -36,6 +51,10 @@ export class AddUserComponent {
 
 
     addUser(): void {
-        this.userService.addUser(this.addUserForm.value);
+        console.log(this.addUserForm.value);
+        this.userService.addUser(this.addUserForm.value)
+        .subscribe( message => {
+            console.log(message);
+        });
     }
 }

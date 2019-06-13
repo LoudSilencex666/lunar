@@ -3,10 +3,10 @@ const router = express.Router();
 const dbPool = require('../dbconnect');
 
 const authTokenVerify = require('../middlewares/authTokenVerify');
+const objectToMysqlSet = require('../helpers/objectToMysqlSet');
 
 router.get('/getuser', authTokenVerify, function(req, res) {
     dbPool.query(`SELECT * FROM users WHERE id = "${req.userId}"`).then( (user) => {
-        console.log(user);
         res.status(200).json(user[0]);
     }).catch( function(err) {
         console.log(err);
@@ -15,7 +15,6 @@ router.get('/getuser', authTokenVerify, function(req, res) {
 
 router.get('/getusers', authTokenVerify, function(req, res) {
     dbPool.query(`SELECT * FROM users`).then( (users) => {
-        console.log(users);
         res.status(200).json(users);
     }).catch( function(err) {
         console.log(err);
@@ -23,8 +22,9 @@ router.get('/getusers', authTokenVerify, function(req, res) {
 });
 
 router.post('/adduser', authTokenVerify, function(req, res) {
-    dbPool.query(`INSERT INTO 'users' SET ${req.body.addUserData}`).then( () => {
-        res.status(200).send('user added');
+    console.log(`INSERT INTO users SET ${objectToMysqlSet(req.body)}`);
+    dbPool.query(`INSERT INTO users SET ${objectToMysqlSet(req.body)};`).then( () => {
+        res.status(200).json({message: 'user added'});
     }).catch( function(err) {
         console.log(err);
     })

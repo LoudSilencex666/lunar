@@ -7,27 +7,27 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class UserService {
     constructor(
-        private apiSercive: ApiService
+        private apiService: ApiService
         ) {}
 
     getCurrentUser(): Observable<User> {
-        return this.apiSercive.get(`/users/getuser`);
+        return this.apiService.get(`/users/getuser`);
     }
 
     getAllUsers(): Observable<User[]> {
-        return this.apiSercive.get(`/users/getusers`);
+        return this.apiService.get(`/users/getusers`);
     }
 
-    addUser(addUserData): Observable<any> {
-        return this.apiSercive.post(`/users/adduser`, {addUserData});
+    addUser(addUserData: Object): Observable<any> {
+        return this.apiService.post(`/users/adduser`, addUserData);
     }
 
-    editUser(editUserData): Observable<any> {
-        return this.apiSercive.post(`/users/edituser`, {editUserData});
+    editUser(editUserData: Object): Observable<any> {
+        return this.apiService.post(`/users/edituser`, editUserData);
     }
 
-    deleteUser(deleteUserData): Observable<any> {
-        return this.apiSercive.post(`/users/deleteuser`, {deleteUserData});
+    deleteUser(deleteUserData: Object): Observable<any> {
+        return this.apiService.post(`/users/deleteuser`, deleteUserData);
     }
 
 }

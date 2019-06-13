@@ -11,15 +11,13 @@
         <label for="name"> Number in class: </label>
         <input type="number" name="register-number" placeholder="1" formControlName="register_number">
         <label for="name"> Class: </label>
-        <select name="group_id" formControlName="group_id">
-            <option> 1A </option>
+        <select name="group_id" formControlName="group_id" >
+            <option *ngFor="let group of groups | async as groups; first as isFirst" [attr.id]="group.id" [ngValue]="group.id"> {{ group.name }} </option>
         </select>
-        <label for="name"> Role: </label>
+        <label for="role"> Role: </label>
         <select name="role" formControlName="role">
-            <option> user </option>
+            <option *ngFor="let role of roles | async as roles; first as isFirst" [ngValue]="role"> {{ role }} </option>
         </select>
-
-
     </form>
     <button (click)="addUser()">Add User</button>
 </div>

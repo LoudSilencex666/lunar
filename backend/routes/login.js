@@ -44,13 +44,6 @@ router.post('/', function(req, res) {
 
 router.get('/', function(req, res) {
 
-        console.log('chuj');
-        res.status(200)
-
-    //console.log('xD');
-
-    //res.status(200).json(zipa, '111');
-
 });
 
 module.exports = router;

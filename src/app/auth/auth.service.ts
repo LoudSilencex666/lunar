@@ -12,6 +12,6 @@ export class AuthService {
     ) {}
 
     login(login: string, password: string) {
-        return this.http.post<AuthModel>(`${environment.api_url}/login`, {login, password}, {withCredentials: true});
+        return this.apiService.post(`/login`, {login, password});
     }
 }
