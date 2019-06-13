@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { share, map } from 'rxjs/operators';
+
 import { UserService } from '../core';
 import { GroupsService } from '../core';
+import { UserManagementService } from './users-shared.service';
+
 import { Group } from '../core';
 import { User } from '../core';
-import { Observable, fromEventPattern, of } from 'rxjs';
-import { filter, share, map } from 'rxjs/operators';
+
 
 
 @Component({
@@ -17,8 +21,15 @@ import { filter, share, map } from 'rxjs/operators';
 export class UsersComponent implements OnInit {
     constructor(
         private userService: UserService,
-        private groupsService: GroupsService
-    ) {}
+        private groupsService: GroupsService,
+        private userMngService: UserManagementService
+    ) {
+        this.userMngService.userAdded.subscribe(
+            () => {
+                this.activeUsers();
+            }
+        )
+    }
 
     users: Observable<User | User[]>;
     groups: Observable<Group | Group[]>;
@@ -51,8 +62,6 @@ export class UsersComponent implements OnInit {
         });
 
         this.activeUsers();
-        console.log(this.groupsArr);
-        console.log(this.activeGroupId);
     }
 }
 

@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
-import { User } from '../../core';
+import { UserManagementService } from '../users-shared.service';
 import { UserService } from '../../core';
 import { RolesService } from '../../core';
 import { GroupsService } from '../../core';
+
 import { Group } from '../../core';
+import { User } from '../../core';
 
 @Component({
     selector: 'app-add-user',
@@ -16,7 +19,7 @@ import { Group } from '../../core';
     styleUrls: ['./addUser.component.css']
 })
 
-export class AddUserComponent implements OnInit{
+export class AddUserComponent implements OnInit {
     addUserForm: FormGroup;
     groups: Observable<Group | Group[]>;
     roles: Observable<string[]>;
@@ -24,10 +27,11 @@ export class AddUserComponent implements OnInit{
     constructor(private fb: FormBuilder,
                 private userService: UserService,
                 private rolesService: RolesService,
-                private groupsService: GroupsService
+                private groupsService: GroupsService,
+                private userMngService: UserManagementService
     ) {
-
         this.createForm();
+
     }
 
     ngOnInit() {
@@ -50,11 +54,11 @@ export class AddUserComponent implements OnInit{
     }
 
 
-    addUser(): void {
-        console.log(this.addUserForm.value);
+    addUser() {
         this.userService.addUser(this.addUserForm.value)
         .subscribe( message => {
             console.log(message);
+            this.userMngService.addingUser();
         });
     }
 }

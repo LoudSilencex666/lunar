@@ -8,6 +8,7 @@ import { UsersComponent } from './users.component';
 import { EditUserComponent } from './editUser/editUser.component';
 import { AddUserComponent } from './addUser/addUser.component';
 import { DeleteUserComponent } from './deleteUser/deleteUser.component';
+import { UserManagementService } from './users-shared.service';
 
 
 
@@ -25,8 +26,9 @@ import { DeleteUserComponent } from './deleteUser/deleteUser.component';
     EditUserComponent,
   ],
   providers: [
-
+    UserManagementService
   ]
 
 })
+
 export class UsersModule { }
