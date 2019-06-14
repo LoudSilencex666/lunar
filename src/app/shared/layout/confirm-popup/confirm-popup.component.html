@@ -1,0 +1,5 @@
+<div @fade class="window">
+    {{ windowValues.message }}
+    <button (click)="isConfirmed(false)">Close</button>
+    <button (click)="isConfirmed(true)">{{ windowValues.buttonValue }}</button>
+</div>

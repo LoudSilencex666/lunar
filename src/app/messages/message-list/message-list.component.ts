@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecievedMessage, MessagesService } from '../../core';
-import { TouchSequence } from 'selenium-webdriver';
+import { RecievedMessage, MessagesService, ConfirmService } from '../../core';
 
 @Component({
     selector: 'app-messages-messagelist',
@@ -15,7 +14,9 @@ export class MessageListComponent implements OnInit {
     activeMessage: any;
 
 constructor(
-    private messagesService: MessagesService) {}
+    private messagesService: MessagesService,
+    private confirmService: ConfirmService
+    ) {}
 
     ngOnInit() {
         this.messagesService.refreshNeeded$
@@ -24,9 +25,17 @@ constructor(
         });
 
         this.getMessages();
+        this.passValues();
 
         this.activeMessage = [];
         this.list = 'recieved';
+    }
+
+    private passValues() {
+        this.confirmService.changeWindowValues({
+            message: 'Are you sure you want to delete this message?',
+            buttonValue: 'Delete',
+        });
     }
 
     private getMessages() {
@@ -56,10 +65,15 @@ constructor(
         }
     }
 
-    private deleteMessage(id: number) {
-        this.messagesService.deleteMessage(id)
-        .subscribe(() => {
-            this.getMessages();
-        }, (err) => console.log(err));
+    private async deleteMessage(id: number) {
+        this.confirmService.changeWindowState('opened');
+        await this.confirmService.confirmation().then(() => {
+            this.messagesService.deleteMessage(id)
+            .subscribe(() => {
+                this.getMessages();
+            }, (err) => console.log(err));
+        }).catch(() => {
+            console.log('Activity cancelled');
+        });
     }
 }

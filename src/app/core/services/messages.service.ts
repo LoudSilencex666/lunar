@@ -32,8 +32,8 @@ export class MessagesService {
         );
     }
 
-    deleteMessage(id: number) {
-        return this.http.delete<{info: string}>(`${environment.api_url}/messages/delete/${id}`, {withCredentials: true})
+    deleteMessage(id: number): Observable<void> {
+        return this.http.delete<void>(`${environment.api_url}/messages/delete/${id}`, {withCredentials: true})
         .pipe(
             tap(() => {
                 this._refreshNeeded$.next();

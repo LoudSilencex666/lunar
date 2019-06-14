@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService, NewsServcie, StatsService, SubjectService, UserService, GroupsService, RolesService } from './services';
 import { MessagesService } from './services/messages.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ConfirmService } from './services/confirm-popup.service';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CookieService } from 'ngx-cookie-service';
     CookieService,
     GroupsService,
     RolesService,
+    ConfirmService
   ],
   declarations: []
 })

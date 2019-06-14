@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
+import { SidebarComponent, HeaderComponent, FooterComponent, ConfirmPopupComponent } from './layout';
 
 @NgModule({
     imports: [
@@ -17,7 +17,8 @@ import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
     declarations: [
         SidebarComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        ConfirmPopupComponent
     ],
     exports: [
         ReactiveFormsModule,
@@ -25,7 +26,8 @@ import { SidebarComponent, HeaderComponent, FooterComponent } from './layout';
         HeaderComponent,
         FooterComponent,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ConfirmPopupComponent
     ]
 })
 

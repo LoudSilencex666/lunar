@@ -6,3 +6,4 @@ export * from './subject.service';
 export * from './messages.service';
 export * from './groups.service';
 export * from './roles.service';
+export * from './confirm-popup.service';
