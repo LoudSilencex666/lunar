@@ -1,15 +1,89 @@
 :host {
     width: 100%;
     height: 100%;
-    grid-column: 5/15;
-    grid-row: 3/15;
-    background: rgba(33,33,33, 1);
+    grid-column: 3/14;
+    grid-row: 4/19;
+    display: flex;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
 }
 
-.sent {
-    float: left;
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 5%;
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    font-size: 1.5rem;
+    transition-duration: .7s;
 }
 
-.recieved {
-    float: left;
+.switch#sent {
+    box-shadow: inset -1px 0px 0px 2px rgb(0, 153, 255);
+}
+
+.switch#recieved {
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
+}
+
+.switch:hover {
+    color: rgb(0, 153, 255);
+    background: rgb(36, 36, 36);
+    cursor: pointer;
+}
+
+.message_list {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    flex-wrap: wrap;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
+}
+
+.sent, .recieved{
+    height: 95%;
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.content {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 130px;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    box-shadow: inset 0px -2px 0px 0px rgb(0, 153, 255);
+}
+
+.content > .title {
+    width: 90%;
+    display: flex;
+    align-self: flex-start;
+    margin: 10px 10px 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.content > .date_name {
+    display: flex;
+    align-self: flex-end;
+    width: 80%;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0px 5px 0px 10px;
 }

@@ -1,36 +1,28 @@
-<div class="message_container">
-    <button (click)="switch_list(type='recieved')">Recieved</button><button (click)="switch_list(type='sent')">Sent</button>
-    <div class="message_list">
-        <div class="recieved" *ngIf="list === 'recieved'">
-            <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')">
-                {{ recieved.title }}
-                {{ recieved.creation_date | date:'shortDate' }}
-                {{ recieved.name }} {{ recieved.lastname }}
-                <button (click)="deleteMessage(recieved.id); $event.stopPropagation()">{{ recieved.id }}</button>
-            </div>
-        </div>
-        <div class="sent" *ngIf="list === 'sent'">
-            <div class="content" *ngFor="let sent of sent_messages; index as i" (click)="getContent(i, type='sent')">
-                {{ sent.title }}
-                {{ sent.creation_date | date:'shortDate' }}
-                {{ sent.name }} {{ sent.lastname }}
-                <button (click)="deleteMessage(sent.id); $event.stopPropagation()">{{ sent.id }}</button>
+<div class="message_list">
+    <a class="switch" id="recieved" (click)="switch_list(type='recieved')">Recieved</a><a class="switch" id="sent" (click)="switch_list(type='sent')">Sent</a>
+    <div class="recieved" *ngIf="list === 'recieved'">
+        <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')">
+            <p class="title">{{ recieved.title }}</p>
+            <div class="date_name">
+                <p class="date">Added: {{ recieved.creation_date | date:'shortDate' }}</p>
+                <p class="user">{{ recieved.name }} {{ recieved.lastname }}</p>
             </div>
         </div>
     </div>
-    <div class="message_content">
-        {{ activeMessage.title }}
-        {{ activeMessage.content }}
-        {{ activeMessage.creation_date | date:'shortDate' }}
-        {{ activeMessage.name }} {{ activeMessage.lastname }}
+    <div class="sent" *ngIf="list === 'sent'">
+        <div class="content" *ngFor="let sent of sent_messages; index as i" (click)="getContent(i, type='sent')">
+            <p class="title">{{ sent.title }}</p>
+            <div class="date_name">
+                <p class="date">Added: {{ sent.creation_date | date:'shortDate' }}</p>
+                <p class="user">{{ sent.name }} {{ sent.lastname }}</p>
+            </div>
+            <button (click)="deleteMessage(sent.id); $event.stopPropagation()">{{ sent.id }}</button>
+        </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
+<div class="message_content">
+    {{ activeMessage.title }}
+    {{ activeMessage.content }}
+    {{ activeMessage.creation_date | date:'shortDate' }}
+    {{ activeMessage.name }} {{ activeMessage.lastname }}
+</div>
