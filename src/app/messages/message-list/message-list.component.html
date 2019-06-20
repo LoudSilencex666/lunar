@@ -20,6 +20,14 @@
             <div class="delete" (click)="deleteMessage(sent.id); $event.stopPropagation()"></div>
         </div>
     </div>
+    <form class="filterForm" [formGroup]="filterForm">
+        <input (focus)="clearSearch()" type="text" class="search" formControlName="searchValue" placeholder="Search...">
+        <select formControlName="condition">
+            <option disabled [ngValue]="null">Search Condition</option>
+            <option value="Title">Title</option>
+            <option value="User">Last Name</option>
+        </select>
+    </form>
 </div>
 <div class="message_content">
     <p class="a_title">{{ activeMessage.title }}</p>
