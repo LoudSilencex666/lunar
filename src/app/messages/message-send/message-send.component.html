@@ -1,19 +1,21 @@
-<div class= form_container>
-    <form id="message" class="message" [formGroup]="messageForm" (ngSubmit)="send()">
-        <select formControlName="groups" id="groups">
-            <option *ngFor="let group of groups" [value]="group.id">
-                {{ group.name }}
+<form class="messageForm" [formGroup]="messageForm" (ngSubmit)="send()">
+    <select formControlName="groups" id="groups">
+        <option disabled [ngValue]="null">Select Group</option>
+        <option *ngFor="let group of groups" [value]="group.id">
+            {{ group.name }}
+        </option>
+    </select>
+    <select formControlName="user_id" id="user_id"> 
+            <option disabled [ngValue]="null">Select User</option>
+            <option *ngFor="let user of users" [value]="user.id">
+                {{ user.name }} {{ user.lastname }}
             </option>
-        </select>
-        <select formControlName="user_id" id="user_id"> 
-            <ng-container *ngFor="let user of users">
-                <option  [ngValue]="user.id">
-                    {{ user.name }} {{ user.lastname }}
-                </option>
-            </ng-container>
-        </select>
-        <input type="text" name="message-title" placeholder="Title" formControlName="title">
-        <input type="text" name="message-content" placeholder="Content" formControlName="content">
-        <button type="submit">Submit</button>
-    </form>
-</div>
+    </select>
+    <textarea class="title" type="text" name="message-title" placeholder="Title" formControlName="title" maxlength="100"></textarea> 
+    <textarea class="content" type="text" name="message-content" placeholder="Content" formControlName="content" maxlength="1000"></textarea>      
+    <div class="buttons">
+        <button class="submit" type="submit" [disabled]="!messageForm.valid">Submit</button>
+        <button (click)="reset()" class="reset">Reset</button>
+    </div>
+    
+</form>

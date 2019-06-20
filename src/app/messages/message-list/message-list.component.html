@@ -1,5 +1,6 @@
 <div class="message_list">
-    <a class="switch" id="recieved" (click)="switch_list(type='recieved')">Recieved</a><a class="switch" id="sent" (click)="switch_list(type='sent')">Sent</a>
+    <a class="switch" [ngStyle]="list === 'recieved' ?{'background-color': 'rgb(31, 31, 31)', 'color': 'rgb(0, 153, 255)'} : {'color': 'white'}" id="recieved" (click)="switch_list(type='recieved')">Recieved</a>
+    <a class="switch" id="sent" [ngStyle]="list === 'sent' ?{'background-color': 'rgb(31, 31, 31)', 'color': 'rgb(0, 153, 255)'} : {'color': 'white'}" (click)="switch_list(type='sent')">Sent</a>
     <div class="recieved" *ngIf="list === 'recieved'">
         <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')">
             <p class="title">{{ recieved.title }}</p>
@@ -10,19 +11,19 @@
         </div>
     </div>
     <div class="sent" *ngIf="list === 'sent'">
-        <div class="content" *ngFor="let sent of sent_messages; index as i" (click)="getContent(i, type='sent')">
+        <div class="content" *ngFor="let sent of sent_messages; index as i" (click)="getContent(i, type='sent')" [style.color]="active_index === i ? 'rgb(0, 153, 255)' : 'white'">
             <p class="title">{{ sent.title }}</p>
             <div class="date_name">
                 <p class="date">Added: {{ sent.creation_date | date:'shortDate' }}</p>
                 <p class="user">{{ sent.name }} {{ sent.lastname }}</p>
             </div>
-            <button (click)="deleteMessage(sent.id); $event.stopPropagation()">{{ sent.id }}</button>
+            <div class="delete" (click)="deleteMessage(sent.id); $event.stopPropagation()"></div>
         </div>
     </div>
 </div>
 <div class="message_content">
-    {{ activeMessage.title }}
-    {{ activeMessage.content }}
-    {{ activeMessage.creation_date | date:'shortDate' }}
-    {{ activeMessage.name }} {{ activeMessage.lastname }}
+    <p class="a_title">{{ activeMessage.title }}</p>
+    <pre class="a_content">{{ activeMessage.content }}</pre>
+    <p class="a_date">{{ activeMessage.creation_date | date:'shortDate' }}</p>
+    <p class="a_user">{{ activeMessage.name }} {{ activeMessage.lastname }}</p>
 </div>

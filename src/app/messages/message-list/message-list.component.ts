@@ -12,6 +12,7 @@ export class MessageListComponent implements OnInit {
     sent_messages: RecievedMessage[];
     list: string;
     activeMessage: any;
+    active_index: number;
 
 constructor(
     private messagesService: MessagesService,
@@ -22,6 +23,7 @@ constructor(
         this.messagesService.refreshNeeded$
         .subscribe(() => {
             this.getMessages();
+            this.resetList();
         });
 
         this.getMessages();
@@ -36,6 +38,11 @@ constructor(
             message: 'Are you sure you want to delete this message?',
             buttonValue: 'Delete',
         });
+    }
+
+    private resetList() {
+        this.activeMessage = [];
+        this.active_index = undefined;
     }
 
     private getMessages() {
@@ -54,14 +61,16 @@ constructor(
 
     private switch_list(type: string) {
         this.list = type;
-        this.activeMessage = [];
+        this.resetList();
     }
 
     private getContent(i: number, type: string) {
         if (type === 'sent') {
             this.activeMessage = this.sent_messages[i];
+            this.active_index = i;
         } else if (type === 'recieved') {
             this.activeMessage = this.recieved_messages[i];
+            this.active_index = i;
         }
     }
 
@@ -71,6 +80,7 @@ constructor(
             this.messagesService.deleteMessage(id)
             .subscribe(() => {
                 this.getMessages();
+                this.resetList();
             }, (err) => console.log(err));
         }).catch(() => {
             console.log('Activity cancelled');

@@ -1,5 +1,9 @@
-<div @fade class="window">
-    {{ windowValues.message }}
-    <button (click)="isConfirmed(false)">Close</button>
-    <button (click)="isConfirmed(true)">{{ windowValues.buttonValue }}</button>
+<div class="blackout" (click)="isConfirmed(false)">
+    <div class="window">
+        <p class="message" (click)=" $event.stopPropagation()">{{ windowValues.message }}</p>
+        <div class="buttons">
+            <button id="close" (click)="isConfirmed(false)">Close</button>
+            <button id="confirm" (click)="isConfirmed(true)">{{ windowValues.buttonValue }}</button>
+        </div>
+    </div>
 </div>

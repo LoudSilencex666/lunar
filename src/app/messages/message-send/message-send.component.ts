@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SentMessage, MessagesService, GroupsService, Group, UserService, User } from '../../core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-message-messagesend',
@@ -35,10 +35,10 @@ constructor(
         });
 
         this.messageForm = this.formBuilder.group({
-            title: [''],
-            content: [''],
-            user_id: [''],
-            groups: ['']
+            title: ['', [Validators.required]],
+            content: ['', [Validators.required]],
+            user_id: [null, [Validators.required]],
+            groups: [null, [Validators.required]]
         });
 
         this.onChanges();
@@ -48,13 +48,15 @@ constructor(
         this.messageForm.get('groups').valueChanges
         .subscribe((value) => {
             this.value = +value;
-            console.log(typeof this.value);
             this.userService.getAllUsers()
             .subscribe((users: User[]) => {
                 this.users = users.filter(val => val.group_id === this.value && val.id !== this.currentUser);
-                console.log(this.users);
             });
         });
+    }
+
+    reset() {
+        this.messageForm.reset();
     }
 
     send() {

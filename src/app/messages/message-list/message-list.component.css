@@ -29,7 +29,6 @@
 
 .switch:hover {
     color: rgb(0, 153, 255);
-    background: rgb(36, 36, 36);
     cursor: pointer;
 }
 
@@ -54,6 +53,33 @@
     min-height: 0;
 }
 
+.sent::-webkit-scrollbar {
+    width: 1em;
+}
+
+.sent::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset  0px 0px 4px 2px rgba(0, 153, 255, 1);
+}
+
+.sent::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0,104,255,1) 0%, rgba(0,153,255,1) 50%, rgba(0,104,255,1) 100%);
+}
+
+.recieved::-webkit-scrollbar {
+    width: 1em;
+}
+
+.recieved::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset  0px -2px 4px 2px rgba(0, 153, 255, 1);
+}
+
+.recieved::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(0,104,255,1) 0%, rgba(0,153,255,1) 50%, rgba(0,104,255,1) 100%);
+}
+
+
 .content {
     flex-shrink: 0;
     display: flex;
@@ -63,7 +89,13 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
+    cursor: default;
     box-shadow: inset 0px -2px 0px 0px rgb(0, 153, 255);
+    transition-duration: .7s;
+}
+
+.content:hover {
+    color: rgb(0, 153, 255);
 }
 
 .content > .title {
@@ -86,4 +118,65 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0px 5px 0px 10px;
+}
+
+.content > .delete {
+    background: url('/assets/images/icons/delete.png') no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+    height: 25%;
+    align-self: center;
+    transition: 200ms;
+}
+
+
+
+.message_content {
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    height: 100%;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.a_title {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 3% 20px 2% 30px;
+}
+
+.a_content {
+    display: flex;
+    width: 100%;
+    height: 65%;
+    text-indent: 50px;
+    font-size: 1.2rem;
+    margin: 3% 20px 2% 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.a_date {
+    display: flex;
+    height: 5%;
+    width: 45%;
+    margin: 2% 2% 8% 3%;
+    font-size: 1.2rem;
+}
+
+.a_user {
+    display: flex;
+    height: 5%;
+    width: 45%;
+    margin: 2% 5% 8% 0;
+    font-size: 1.2rem;
+    justify-content: flex-end;
 }
