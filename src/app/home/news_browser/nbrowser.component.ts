@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { NewsServcie } from '../../core';
-import { News } from '../../core';
+import { RecievedNews } from '../../core';
 
 @Component({
     selector: 'app-home-nbrowser',

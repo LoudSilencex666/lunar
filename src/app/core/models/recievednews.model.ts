@@ -1,8 +1,8 @@
-export interface News {
+export interface RecievedNews {
     id: number;
     title: string;
     content: string;
     creation_date: Date;
-    type: number;
-    author: string;
+    name: string;
+    lastname: string;
 }
