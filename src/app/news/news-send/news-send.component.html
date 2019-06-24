@@ -1,0 +1,23 @@
+<form class="newsForm" [formGroup]="newsForm" (ngSubmit)="submit()">
+        <p>Select Group(s)</p>
+    <div class="checkboxes">
+    <label class="selectAll">
+        Select all
+        <input type="checkbox" class="checkAll" formControlName="selectAll">
+        <span class="checkbox"></span>
+    </label>
+    <div class="groupslist">
+        <label fromArrayName="groups" *ngFor="let group of newsForm.controls.groups.controls; let i = index">
+            {{groups[i].name}}
+            <input type="checkbox" [formControl]="group">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+    </div>
+    <textarea class="title" type="text" name="news-title" placeholder="Title" formControlName="title" maxlength="100"></textarea> 
+    <textarea class="content" type="text" name="news-content" placeholder="Content" formControlName="content" maxlength="1000"></textarea>
+    <div class="buttons">
+        <button class="submit" type="submit" [disabled]="!newsForm.valid">Submit</button>
+        <button (click)="reset()" class="reset">Reset</button>
+    </div>
+</form>

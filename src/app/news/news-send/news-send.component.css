@@ -1,0 +1,189 @@
+:host {
+    width: 100%;
+    height: 100%;
+    grid-column: 16/20;
+    grid-row: 4/17;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.newsForm {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.newsForm textarea {
+    font-size: 1.2rem;
+    background: rgb(36, 36, 36);
+    border: 2px solid rgb(0, 153, 255);
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    resize: none;
+    transition: 1s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.groupslist {
+    display: flex;
+    height: 100%;
+    width: 55%;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.checkboxes {
+    justify-content: space-between;
+    display: flex;
+    height: 20%;
+    width: 100%;
+    flex-wrap: wrap;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 153, 255);
+}
+
+.newsForm p {
+    font-size: 1rem;
+    width: 100%;
+    height: 3%;
+    margin: 0;
+}
+
+.groupslist label {
+    padding-left: 5%;
+    width: 95%;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: inset 0px -2px 0px 0px rgb(0, 153, 255);
+    transition-duration: .7s;
+    font-size: 1.1rem;
+}
+
+.selectAll{
+    margin: 3% 0 0 3%;
+    display: flex;
+    height: 97%;
+    width: 42%;
+    font-size: 1.2rem;
+    justify-content: flex-start;
+}
+
+.groupslist label:hover {
+    color: rgb(0, 153, 255);
+}
+
+.groupslist label input {
+    cursor: pointer;
+}
+
+.newsForm textarea.ng-dirty.ng-invalid {
+    border: 2px solid red;
+}
+
+.content {
+    height: 40%;
+}
+
+.title {
+    height: 20%;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+}
+
+.submit {
+    height: 100%;
+    width: 45%;
+    padding: 0 30px 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(200, 200, 200);
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition-duration: 1s;
+    background: transparent;
+    border: 2px solid rgb(0, 153, 255);
+}
+
+.submit:hover {
+    cursor: pointer;
+    color: rgb(0, 153, 255);
+    background: rgb(36, 36, 36);
+}
+
+.submit:disabled {
+    border: 2px solid red;
+}
+
+.submit:disabled:hover {
+    cursor: not-allowed;
+    color: red;
+    background: rgb(36, 36, 36);
+}
+
+.reset {
+    height: 100%;
+    width: 45%;
+    padding: 0 30px 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(200, 200, 200);
+    font-size: 1.2rem;
+    transition-duration: 1s;
+    background: transparent;
+    border: 2px solid rgb(0, 153, 255);
+}
+
+.reset:hover {
+    cursor: pointer;
+    color: rgb(0, 153, 255);
+    background: rgb(36, 36, 36);
+}
+
+label input {
+    opacity: 0;
+}
+
+
+label .checkbox {
+    margin-left: -10px;
+    height: 15px;
+    width: 15px;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 153, 255);
+}
+
+label input:checked ~ .checkbox {
+    background: rgb(70, 70, 70);
+    border-radius: 5px;
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    border: 2px solid rgb(0, 153, 255);
+}

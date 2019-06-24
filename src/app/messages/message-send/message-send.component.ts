@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SentMessage, MessagesService, GroupsService, Group, UserService, User } from '../../core';
+import { MessagesService, GroupsService, Group, UserService, User } from '../../core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -63,7 +63,7 @@ constructor(
         this.messagesService.sendMessage(this.messageForm.value)
         .subscribe((info) => {
             console.log(info);
-            this.messageForm.reset();
+            this.reset();
         });
     }
 

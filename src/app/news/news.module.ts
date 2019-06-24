@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 
 import { NewsComponent } from './news.component';
-import { NewsRoutingModule } from './news-routing.module';
+import { NewsSendComponent } from './news-send/news-send.component';
 
+import { NewsRoutingModule } from './news-routing.module';
 import { SharedModule } from '../shared';
 import { CoreModule } from '../core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 
 @NgModule({
   imports: [
         SharedModule,
         NewsRoutingModule,
-        CoreModule
+        CoreModule,
+        FormsModule,
+        BrowserModule
     ],
     declarations: [
-      NewsComponent
+      NewsComponent,
+      NewsSendComponent
     ],
     providers: [
     ]

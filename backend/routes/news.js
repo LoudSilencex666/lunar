@@ -18,7 +18,7 @@ router.post('/', authTokenVerify, function(req, res) {
         dbPool.query(`INSERT INTO group_news(group_id, news_id) VALUES ?`, [groups])
         .then((response) => {
             res.status(200).json({
-                info: 'Message recieved'
+                info: 'News recieved'
             });
             console.log(response);
         }).catch( function(err) {
