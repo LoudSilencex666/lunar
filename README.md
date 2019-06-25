@@ -1,8 +1,8 @@
 # Lunar
 
-## Lunar is online school register project we currently working on.
-## Lunar is a MEAN stack app (Mysql, Express.js, Angular6, Node.js).
-## It's structure is split into backend and frontend section.
+### Lunar is online school register project we currently working on.
+### Lunar is a MEAN stack app (Mysql, Express.js, Angular6, Node.js).
+### It's structure is split into backend and frontend section.
 
 ## In order to setup project on your local machine you need to:
 
