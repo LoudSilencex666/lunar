@@ -25,7 +25,7 @@
 #### if you chose to change it then open lunar/server.js to change backend port from `3000` to new,
 #### than open lunar/backend/app.js and update `allowedOrigins` with your new `api_url`  
 
-#### Next run npm install in lunar directory
+#### Next run `npm install` in lunar directory
 
 #### Run `start:server` and `start:client`
 
