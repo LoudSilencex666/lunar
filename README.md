@@ -1,27 +1,35 @@
 # Lunar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+### Lunar is online school register project we currently working on.
+### Lunar is a MEAN stack app (Mysql, Express.js, Angular6, Node.js).
+### It's structure is split into backend and frontend section.
 
-## Development server
+### In order to setup project on your local machine you need to:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Clone repo from https://github.com/LoudSilencex666/lunar.git
 
-## Code scaffolding
+## Install your own mysql server or use https://remotemysql.com/ for faster development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Create new database and import test database from lunar/test_db/test db.sql
+    It has whole structure and dummy data to mess around with.
 
-## Build
+## Go to Lunar directory and rename .env-example to .env than change its example data with your mysql server data for correct database connection.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Go to lunar/backend/config and rename index-example.js to index.js than change its:
+## cookieSessionId to whatever you want, its required to json-web-token and
+## process.env.SECRET also to whatever you wan
 
-## Running unit tests
+## Next step go to lunar/app/environments rename environment.example.ts to enviroment.ts and change its
+## `cookieSession` to the same as `cookieSessionId` from lunar/backend/config/index.js
+## You can also change your api_url from default: 'http://localhost:3000' but we highly recommended to leave it as is.
+## if you chose to change it then open lunar/server.js to change backend port from `3000` to new,
+## than open lunar/backend/app.js and update `allowedOrigins` with your new `api_url`  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Next run npm install in lunar directory
 
-## Running end-to-end tests
+## Run `start:server` and `start:client`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## In order to see server logs open new command line and Run `logs:server`
 
-## Further help
+## That's it!
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

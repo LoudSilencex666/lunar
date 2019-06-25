@@ -38,7 +38,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# env file
+# env files
 .env
-
+/backend/config/index.js
 /src/environments/environment.ts

@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    api_url: 'podaj linka do api',
+    api_url: 'http://localhost:3000',
     cookieSession: 'cookieSessionName'
 };
 
