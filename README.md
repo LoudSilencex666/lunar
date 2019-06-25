@@ -16,12 +16,12 @@
 #### Go to Lunar directory and rename .env-example to .env than change its example data with your mysql server data for correct database connection.
 
 #### Go to lunar/backend/config and rename index-example.js to index.js than change its:
-#### cookieSessionId to whatever you want, its required to json-web-token and
-#### process.env.SECRET also to whatever you wan
+#### `cookieSessionId` to whatever you want, its required to json-web-token and
+#### `process.env.SECRET` also to whatever you wan
 
 #### Next step go to lunar/app/environments rename environment.example.ts to enviroment.ts and change its
 #### `cookieSession` to the same as `cookieSessionId` from lunar/backend/config/index.js
-#### You can also change your api_url from default: 'http://localhost:3000' but we highly recommended to leave it as is.
+#### You can also change your `api_url` from default: 'http://localhost:3000' but we highly recommended to leave it as is.
 #### if you chose to change it then open lunar/server.js to change backend port from `3000` to new,
 #### than open lunar/backend/app.js and update `allowedOrigins` with your new `api_url`  
 
