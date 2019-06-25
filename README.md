@@ -1,10 +1,10 @@
 # Lunar
 
-### Lunar is online school register project we currently working on.
-### Lunar is a MEAN stack app (Mysql, Express.js, Angular6, Node.js).
-### It's structure is split into backend and frontend section.
+## Lunar is online school register project we currently working on.
+## Lunar is a MEAN stack app (Mysql, Express.js, Angular6, Node.js).
+## It's structure is split into backend and frontend section.
 
-### In order to setup project on your local machine you need to:
+## In order to setup project on your local machine you need to:
 
 #### Clone repo from https://github.com/LoudSilencex666/lunar.git
 
@@ -17,7 +17,7 @@
 
 #### Go to lunar/backend/config and rename index-example.js to index.js than change its:
 #### `cookieSessionId` to whatever you want, its required to json-web-token and
-#### `process.env.SECRET` also to whatever you wan
+#### `process.env.SECRET` also to whatever you want
 
 #### Next step go to lunar/app/environments rename environment.example.ts to enviroment.ts and change its
 #### `cookieSession` to the same as `cookieSessionId` from lunar/backend/config/index.js
