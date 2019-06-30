@@ -1,0 +1,45 @@
+<form [formGroup]="filterForm" class="filterForm">
+    <input (focus)="clearSearch()" type="text" class="search" formControlName="searchValue" placeholder="Search...">
+    <select formControlName="condition">
+        <option disabled [ngValue]="null">Search Condition</option>
+        <option value="Title">Title</option>
+        <option value="User">Last Name</option>
+    </select>
+    <label class="filterAuthor">
+        Display only your news
+        <input type="checkbox" class="checkAuthor" formControlName="filterAuthor">
+        <span class="checkbox"></span>
+    </label>
+</form>
+<div class="news_list">
+    <div class="full_list" *ngIf="list === false">
+        <div class="content" *ngFor="let all of recieved_news; index as i" (click)="getContent(i, type='full')" [style.color]="active_index === i ? 'rgb(0, 153, 255)' : 'white'">
+            <p class="title">{{ all.title }}</p>
+            <div class="date_name">
+                <p class="date">Added: {{ all.creation_date | date:'shortDate' }}</p>
+                <p class="user">{{ all.name }} {{ all.lastname }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="filtered_list" *ngIf="list === true">
+        <div class="content" *ngFor="let filtered of filtered_news; index as i" (click)="getContent(i, type='filtered')" [style.color]="active_index === i ? 'rgb(0, 153, 255)' : 'white'">
+            <p class="title">{{ filtered.title }}</p>
+            <div class="date_name">
+                <p class="date">Added: {{ filtered.creation_date | date:'shortDate' }}</p>
+            </div>
+            <div class="delete" (click)="deleteNews(filtered.id); $event.stopPropagation()"></div>
+        </div>
+    </div>
+</div>
+<div class="news_content" *ngIf="list === false">
+    <p class="a_title">{{ activeNews.title }}</p>
+    <pre class="a_content">{{ activeNews.content }}</pre>
+    <p class="a_date">{{ activeNews.creation_date | date:'shortDate' }}</p>
+    <p class="a_user">{{ activeNews.name }} {{ activeNews.lastname }}</p>
+</div>
+<div class="news_content" *ngIf="list === true">
+    <p class="a_title">{{ activeNews.title }}</p>
+    <pre class="a_content">{{ activeNews.content }}</pre>
+    <p class="a_date">{{ activeNews.creation_date | date:'shortDate' }}</p>
+    <div class="a_user"><div *ngFor="let group of activeGroups">{{ group.name }}</div></div>
+</div>

@@ -3,6 +3,7 @@ export interface RecievedNews {
     title: string;
     content: string;
     creation_date: Date;
-    name: string;
-    lastname: string;
+    name?: string;
+    lastname?: string;
+    author?: number;
 }

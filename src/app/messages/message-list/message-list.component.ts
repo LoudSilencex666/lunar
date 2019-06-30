@@ -27,6 +27,7 @@ constructor(
         .subscribe(() => {
             this.getMessages();
             this.resetList();
+            this.clearSearch();
         });
 
         this.getMessages();
@@ -52,7 +53,7 @@ constructor(
                 if (this.filterForm.get('condition').value === 'Title') {
                     this.messagesService.getRecievedMessages()
                     .subscribe((r_messages: RecievedMessage[]) => {
-                        this.sent_messages = r_messages.filter(val => val.title.includes(this.filter_value));
+                        this.recieved_messages = r_messages.filter(val => val.title.includes(this.filter_value));
                     });
                 } else if (this.filterForm.get('condition').value === 'User') {
                     this.messagesService.getRecievedMessages()
@@ -85,7 +86,7 @@ constructor(
     private passValues() {
         this.confirmService.changeWindowValues({
             message: 'Are you sure you want to delete this message?',
-            buttonValue: 'Delete',
+            buttonValue: 'Delete'
         });
     }
 

@@ -2,7 +2,7 @@
     <a class="switch" [ngStyle]="list === 'recieved' ?{'background-color': 'rgb(31, 31, 31)', 'color': 'rgb(0, 153, 255)'} : {'color': 'white'}" id="recieved" (click)="switch_list(type='recieved')">Recieved</a>
     <a class="switch" id="sent" [ngStyle]="list === 'sent' ?{'background-color': 'rgb(31, 31, 31)', 'color': 'rgb(0, 153, 255)'} : {'color': 'white'}" (click)="switch_list(type='sent')">Sent</a>
     <div class="recieved" *ngIf="list === 'recieved'">
-        <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')">
+        <div class="content" *ngFor="let recieved of recieved_messages; index as i" (click)="getContent(i, type='recieved')" [style.color]="active_index === i ? 'rgb(0, 153, 255)' : 'white'">
             <p class="title">{{ recieved.title }}</p>
             <div class="date_name">
                 <p class="date">Added: {{ recieved.creation_date | date:'shortDate' }}</p>

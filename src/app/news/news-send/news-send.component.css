@@ -73,10 +73,13 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
-    cursor: pointer;
     box-shadow: inset 0px -2px 0px 0px rgb(0, 153, 255);
     transition-duration: .7s;
     font-size: 1.1rem;
+}
+
+label {
+    cursor: pointer;
 }
 
 .selectAll{
