@@ -161,9 +161,10 @@
     width: 100%;
     height: 65%;
     text-indent: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 3% 20px 2% 20px;
     font-family: 'Roboto', sans-serif;
+    white-space: pre-wrap;
 }
 
 .a_date {

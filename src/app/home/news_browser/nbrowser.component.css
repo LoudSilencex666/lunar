@@ -28,11 +28,19 @@
     width: 100%;
     font-size: 1.1rem;
     padding-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .content {
     width: 100%;
     font-size: .8rem;
+}
+
+.content pre {
+    white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
 }
 
 .news-slider-controls {
