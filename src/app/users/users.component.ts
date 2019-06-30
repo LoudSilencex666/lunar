@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { share, map } from 'rxjs/operators';
 
-import { UserService } from '../core';
+import { UsersService } from '../core';
 import { GroupsService } from '../core';
 import { UserManagementService } from './users-shared.service';
 
@@ -20,7 +20,7 @@ import { User } from '../core';
 
 export class UsersComponent implements OnInit {
     constructor(
-        private userService: UserService,
+        private usersService: UsersService,
         private groupsService: GroupsService,
         private userMngService: UserManagementService
     ) {
@@ -48,7 +48,7 @@ export class UsersComponent implements OnInit {
     }
 
     activeUsers() {
-        this.users = this.userService.getAllUsers().pipe(
+        this.users = this.usersService.getAllUsers().pipe(
             map( users => users.filter(user => user.group_id === this.activeGroupId)),
             share()
         );

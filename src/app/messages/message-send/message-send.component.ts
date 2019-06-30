@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MessagesService, GroupsService, Group, UserService, User } from '../../core';
+import { MessagesService, GroupsService, Group, UserService, UsersService, User } from '../../core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class MessageSendComponent implements OnInit {
 
 constructor(
     private userService: UserService,
+    private usersService: UsersService,
     private groupsService: GroupsService,
     private messagesService: MessagesService,
     private formBuilder: FormBuilder) {}
@@ -48,7 +49,7 @@ constructor(
         this.messageForm.get('groups').valueChanges
         .subscribe((value) => {
             this.value = +value;
-            this.userService.getAllUsers()
+            this.usersService.getAllUsers()
             .subscribe((users: User[]) => {
                 this.users = users.filter(val => val.group_id === this.value && val.id !== this.currentUser);
             });

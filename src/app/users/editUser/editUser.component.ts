@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { User } from '../../core';
-import { UserService } from '../../core';
+import { UsersService } from '../../core';
 
 @Component({
     selector: 'app-edit-user',
@@ -14,7 +14,7 @@ export class EditUserComponent {
     editUserForm: FormGroup;
 
     constructor(private fb: FormBuilder,
-                private userService: UserService,
+                private usersService: UsersService,
                 private router: Router) {
 
         this.createForm();
@@ -36,6 +36,6 @@ export class EditUserComponent {
 
 
     editUser(): void {
-        this.userService.editUser(this.editUserForm.value);
+        this.usersService.editUser(this.editUserForm.value);
     }
 }

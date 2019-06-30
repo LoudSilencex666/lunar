@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ApiService, NewsServcie, StatsService, SubjectService, UserService, GroupsService, RolesService } from './services';
+import { ApiService, NewsServcie, StatsService, SubjectService,
+         UsersService, GroupsService, RolesService, UserService } from './services';
 import { MessagesService } from './services/messages.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ConfirmService } from './services/confirm-popup.service';
@@ -14,7 +15,7 @@ import { ConfirmService } from './services/confirm-popup.service';
   ],
   providers: [
     ApiService,
-    UserService,
+    UsersService,
     NewsServcie,
     StatsService,
     SubjectService,
@@ -22,7 +23,8 @@ import { ConfirmService } from './services/confirm-popup.service';
     CookieService,
     GroupsService,
     RolesService,
-    ConfirmService
+    ConfirmService,
+    UserService
   ],
   declarations: []
 })

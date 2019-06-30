@@ -28,7 +28,6 @@ export class AuthComponent {
     }
 
     login() {
-        console.log(this.authForm.value);
         const val = this.authForm.value;
 
         if (val.login && val.password) {

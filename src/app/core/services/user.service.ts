@@ -2,32 +2,31 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
+    private currentUserSubject = new BehaviorSubject<User>({} as User);
+    public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+
     constructor(
         private apiService: ApiService
-        ) {}
+    ) {}
+
+    populateUser() {
+        this.apiService.get(`/users/getuser`).subscribe(
+            userData => this.currentUserSubject.next(userData)
+        );
+    }
 
     getCurrentUser(): Observable<User> {
-        return this.apiService.get(`/users/getuser`);
+        return this.currentUser;
     }
 
-    getAllUsers(): Observable<User[]> {
-        return this.apiService.get(`/users/getusers`);
-    }
-
-    addUser(addUserData: Object): Observable<any> {
-        return this.apiService.post(`/users/adduser`, addUserData);
-    }
-
-    editUser(editUserData: Object): Observable<any> {
-        return this.apiService.post(`/users/edituser`, editUserData);
-    }
-
-    deleteUser(deleteUserData: Object): Observable<any> {
-        return this.apiService.post(`/users/deleteuser`, deleteUserData);
+    updateLoggedUser(user): Observable<User> {
+        /* To do: user update */
+        return user;
     }
 
 }

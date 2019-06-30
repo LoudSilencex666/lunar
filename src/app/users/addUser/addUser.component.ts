@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
 import { UserManagementService } from '../users-shared.service';
-import { UserService } from '../../core';
+import { UsersService } from '../../core';
 import { RolesService } from '../../core';
 import { GroupsService } from '../../core';
 
@@ -25,7 +25,7 @@ export class AddUserComponent implements OnInit {
     roles: Observable<string[]>;
 
     constructor(private fb: FormBuilder,
-                private userService: UserService,
+                private usersService: UsersService,
                 private rolesService: RolesService,
                 private groupsService: GroupsService,
                 private userMngService: UserManagementService
@@ -55,7 +55,7 @@ export class AddUserComponent implements OnInit {
 
 
     addUser() {
-        this.userService.addUser(this.addUserForm.value)
+        this.usersService.addUser(this.addUserForm.value)
         .subscribe( message => {
             console.log(message);
             this.userMngService.changeInTheUser();
