@@ -17,7 +17,7 @@ export class NbrowserComponent implements OnInit {
     currentTransform: number;
 
     constructor() {
-        this.sliderNews = ['Twoja stara1', 'Twoja stara2', 'Twoja stara3'];
+        this.sliderNews = ['Title1', 'Title2', 'Title3'];
         this.currentTransform = 0;
         this.sliderControlInactiveSrc = '/assets/images/slider/inactive.png';
         this.sliderControlActiveSrc = '/assets/images/slider/active.png';
