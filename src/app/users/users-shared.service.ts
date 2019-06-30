@@ -5,14 +5,14 @@ import { Subject } from 'rxjs';
 export class UserManagementService {
 
     // Observable string sources
-    private addingUserSource = new Subject<string>();
+    private userSource = new Subject<string>();
 
     // Observable string streams
-    userAdded = this.addingUserSource.asObservable();
+    userChanged = this.userSource.asObservable();
 
     // Service message commands
-    addingUser() {
-        this.addingUserSource.next();
+    changeInTheUser() {
+        this.userSource.next();
     }
 
 }

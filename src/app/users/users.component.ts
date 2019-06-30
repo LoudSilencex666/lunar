@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
         private groupsService: GroupsService,
         private userMngService: UserManagementService
     ) {
-        this.userMngService.userAdded.subscribe(
+        this.userMngService.userChanged.subscribe(
             () => {
                 this.activeUsers();
             }

@@ -58,7 +58,7 @@ export class AddUserComponent implements OnInit {
         this.userService.addUser(this.addUserForm.value)
         .subscribe( message => {
             console.log(message);
-            this.userMngService.addingUser();
+            this.userMngService.changeInTheUser();
         });
     }
 }
