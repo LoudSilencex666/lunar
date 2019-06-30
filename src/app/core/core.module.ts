@@ -22,7 +22,7 @@ import { ConfirmService } from './services/confirm-popup.service';
     CookieService,
     GroupsService,
     RolesService,
-    ConfirmService
+    ConfirmService,
   ],
   declarations: []
 })

@@ -29,6 +29,10 @@ export class NewsServcie {
         return this.http.get<RecievedNews[]>(`${environment.api_url}/news/getNews`, {withCredentials: true});
     }
 
+    getSliderNews(): Observable<RecievedNews[]> {
+        return this.http.get<RecievedNews[]>(`${environment.api_url}/news/getSliderNews`, {withCredentials: true});
+    }
+
     sendNews(news: SentNews) {
         return this.http.post<SentNews>(`${environment.api_url}/news`, {news}, {withCredentials: true})
         .pipe(

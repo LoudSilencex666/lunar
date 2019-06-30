@@ -1,16 +1,10 @@
 <div class="news-slider">
     <div id="{{i}}" class="slide" [ngStyle]="settingSlide()" *ngFor="let slide of sliderNews; index as i">
         <div class="title">
-            {{slide}}
+            {{slide.title}}
         </div>
         <div class="content">
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
-            no trochę dłuższy content text no trochę dłuższy content text
+            <pre>{{ slide.content }}</pre>
         </div>
     </div>
     <div class="news-slider-controls" >
