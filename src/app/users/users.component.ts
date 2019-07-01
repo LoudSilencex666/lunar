@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { share, map } from 'rxjs/operators';
@@ -10,8 +11,6 @@ import { UserManagementService } from './users-shared.service';
 import { Group } from '../core';
 import { User } from '../core';
 
-
-
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
@@ -19,11 +18,11 @@ import { User } from '../core';
 })
 
 export class UsersComponent implements OnInit {
-    constructor(
-        private usersService: UsersService,
-        private groupsService: GroupsService,
-        private userMngService: UserManagementService
-    ) {
+    constructor(private usersService: UsersService,
+                private groupsService: GroupsService,
+                private userMngService: UserManagementService,
+                private router: Router) {
+
         this.userMngService.userChanged.subscribe(
             () => {
                 this.activeUsers();
@@ -62,6 +61,11 @@ export class UsersComponent implements OnInit {
         });
 
         this.activeUsers();
+    }
+
+    selectUser(user) {
+        this.userMngService.selectUser(user);
+        this.router.navigateByUrl('/users/edit');
     }
 }
 

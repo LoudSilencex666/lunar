@@ -30,7 +30,7 @@
             </div>
         </div>
         <ul class="all-users">
-            <li *ngFor="let user of users | async as users; index as i; first as isFirst">
+            <li *ngFor="let user of users | async as users; index as i; first as isFirst" (click)="selectUser(user)" >
                 {{ i }} {{user.name}} {{user.lastname}}
             </li>
         </ul>

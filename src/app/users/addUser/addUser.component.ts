@@ -28,8 +28,8 @@ export class AddUserComponent implements OnInit {
                 private usersService: UsersService,
                 private rolesService: RolesService,
                 private groupsService: GroupsService,
-                private userMngService: UserManagementService
-    ) {
+                private userMngService: UserManagementService) {
+
         this.createForm();
 
     }

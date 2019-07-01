@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { User } from '../core';
 
 @Injectable()
 export class UserManagementService {
 
-    // Observable string sources
     private userSource = new Subject<string>();
+    private selectedUserSource = new Subject<User>();
 
-    // Observable string streams
     userChanged = this.userSource.asObservable();
+    userSelected = this.selectedUserSource.asObservable();
 
-    // Service message commands
     changeInTheUser() {
         this.userSource.next();
+    }
+
+    selectUser(user) {
+        console.log(user);
+        this.selectedUserSource.next(user);
     }
 
 }

@@ -31,7 +31,7 @@ router.post('/adduser', authTokenVerify, function(req, res) {
 });
 
 router.post('/updateuser', authTokenVerify, function(req, res) {
-    dbPool.query(`UPDATE 'users' SET ${req.body.updateUserData} WHERE id = ${req.body.updateUserId}`).then( () => {
+    dbPool.query(`UPDATE 'users' SET ${objectToMysqlSet(req.body)}; WHERE id = ${req.body.id}`).then( () => {
         res.status(200).send('user updated');
     }).catch( function(err) {
         console.log(err);

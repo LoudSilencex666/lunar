@@ -1,24 +1,23 @@
 <div class="container">
         <form id="editUser" class="editUser" [formGroup]="editUserForm">
             <label for="name"> Name: </label>
-            <input type="text" name="name" placeholder="Name" formControlName="name">
+            <input type="text" name="name" value="{{ selectedUser.name }}" formControlName="name">
             <label for="name"> Lastname: </label>
-            <input type="text" name="lastname" placeholder="Lastname" formControlName="lastname">
+            <input type="text" name="lastname" value="{{ selectedUser.lastname }}" formControlName="lastname">
             <label for="name"> Login: </label>
-            <input type="text" name="login" placeholder="Login" formControlName="login">
+            <input type="text" name="login" value="{{ selectedUser.login }}" formControlName="login">
             <label for="name"> Password: </label>
-            <input type="password" name="password" placeholder="Password" formControlName="password">
+            <input type="password" name="password" value="{{ selectedUser.password }}" formControlName="password">
             <label for="name"> Number in class: </label>
-            <input type="number" name="register-number" placeholder="1" formControlName="register_number">
+            <input type="number" name="register-number" value="{{ selectedUser.register_number }}" formControlName="register_number">
             <label for="name"> Class: </label>
-            <select name="group_id" formControlName="group_id">
-                <option> 1A </option>
+            <select name="group_id" formControlName="group_id" >
+                <option *ngFor="let group of groups | async as groups; first as isFirst" [ngValue]="group.id" [selected]="group.id === selectedUser.group_id"> {{ group.name }} </option>
             </select>
             <label for="name"> Role: </label>
             <select name="role" formControlName="role">
-                <option> user </option>
+                <option *ngFor="let role of roles | async as roles; first as isFirst" [ngValue]="role" [selected]="role === selectedUser.role"> {{ role }} </option>
             </select>
-
         </form>
         <button (click)="editUser()">Edit User</button>
     </div>

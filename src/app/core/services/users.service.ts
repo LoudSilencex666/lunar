@@ -19,7 +19,7 @@ export class UsersService {
     }
 
     editUser(editUserData: Object): Observable<any> {
-        return this.apiService.post(`/users/edituser`, editUserData);
+        return this.apiService.post(`/users/updateuser`, editUserData);
     }
 
     deleteUser(deleteUserData: Object): Observable<any> {
