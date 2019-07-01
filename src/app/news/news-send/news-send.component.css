@@ -78,6 +78,20 @@
     font-size: 1.1rem;
 }
 
+.groupslist::-webkit-scrollbar {
+    width: 1em;
+}
+
+.groupslist::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset  0px 0px 4px 2px rgba(0, 153, 255, 1);
+}
+
+.groupslist::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0,104,255,1) 0%, rgba(0,153,255,1) 50%, rgba(0,104,255,1) 100%);
+}
+
+
 label {
     cursor: pointer;
 }

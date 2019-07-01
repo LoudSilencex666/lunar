@@ -8,7 +8,9 @@ import { SharedModule } from '../shared';
 import { CoreModule } from '../core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NewsListAdminComponent } from './news-list/news-list-admin/news-list-admin.component';
+import { NewsListUserComponent } from './news-list/news-list-user/news-list-user.component';
 
 
 
@@ -23,7 +25,8 @@ import { NewsListAdminComponent } from './news-list/news-list-admin/news-list-ad
     declarations: [
       NewsComponent,
       NewsSendComponent,
-      NewsListAdminComponent
+      NewsListAdminComponent,
+      NewsListUserComponent
     ],
     providers: [
     ]

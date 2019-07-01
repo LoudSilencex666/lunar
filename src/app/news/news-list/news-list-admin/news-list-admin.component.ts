@@ -35,11 +35,11 @@ constructor(
             this.resetList();
         });
 
+        this.resetList();
         this.getGroups();
         this.getNews();
         this.passValues();
 
-        this.resetList();
         this.list = false;
 
         this.filterForm = this.formBuilder.group({
@@ -56,6 +56,7 @@ constructor(
         .subscribe(val => {
             val === true ? this.list = true : this.list = false;
             this.resetList();
+            this.getContent(0, 'filtered');
         });
 
         this.filterForm.get('searchValue').valueChanges
@@ -107,13 +108,17 @@ constructor(
     }
 
     getContent(i: number, type: string) {
-        if (type === 'full') {
-            this.activeNews = this.recieved_news[i];
-            this.active_index = i;
-        } else if (type === 'filtered') {
-            this.activeNews = this.filtered_news[i];
-            this.active_index = i;
-            this.activeGroups = this.groups.filter(val => val.news_id === this.filtered_news[i].id);
+        if (i === this.active_index) {
+            this.resetList();
+        } else {
+            if (type === 'full') {
+                this.activeNews = this.recieved_news[i];
+                this.active_index = i;
+            } else if (type === 'filtered') {
+                this.activeNews = this.filtered_news[i];
+                this.active_index = i;
+                this.activeGroups = this.groups.filter(val => val.news_id === this.filtered_news[i].id);
+            }
         }
     }
 
@@ -132,6 +137,7 @@ constructor(
                 .subscribe((user: User) => {
                 this.currentUser = user['id'];
                 this.filtered_news = this.recieved_news.filter(val => val.author === this.currentUser);
+                this.getContent(0, 'full');
             });
         });
     }

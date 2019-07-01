@@ -42,7 +42,7 @@ export class EditUserComponent implements OnInit {
     ngOnInit() {
         this.groups = this.groupsService.getGroups().pipe(share());
         this.roles = this.rolesService.getRoles().pipe(share());
-        this.selectedUser = this.userMngService.userSelected.pipe(share()) as unknown as User;
+        // this.selectedUser = this.userMngService.userSelected.pipe(share()) as unknown as User;
     }
 
     createForm() {

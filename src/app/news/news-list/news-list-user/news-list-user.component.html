@@ -1,0 +1,25 @@
+<form [formGroup]="filterForm" class="filterForm">
+    <input (focus)="clearSearch()" type="text" class="search" formControlName="searchValue" placeholder="Search...">
+    <select formControlName="condition">
+        <option disabled [ngValue]="null">Search Condition</option>
+        <option value="Title">Title</option>
+        <option value="User">Last Name</option>
+    </select>
+</form>
+<div class="news_list">
+    <div class="list">
+        <div class="content" *ngFor="let news of recieved_news; index as i" (click)="getContent(i)" [style.color]="active_index === i ? 'rgb(0, 153, 255)' : 'white'">
+            <p class="title">{{ news.title }}</p>
+            <div class="date_name">
+                <p class="date">Added: {{ news.creation_date | date:'shortDate' }}</p>
+                <p class="user">{{ news.name }} {{ news.lastname }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news_content">
+    <p class="a_title">{{ activeNews.title }}</p>
+    <pre class="a_content">{{ activeNews.content }}</pre>
+    <p class="a_date">{{ activeNews.creation_date | date:'shortDate' }}</p>
+    <p class="a_user">{{ activeNews.name }} {{ activeNews.lastname }}</p>
+</div>

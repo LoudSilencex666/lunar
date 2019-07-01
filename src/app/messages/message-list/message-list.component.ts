@@ -29,11 +29,10 @@ constructor(
             this.resetList();
             this.clearSearch();
         });
-
+        this.resetList();
         this.getMessages();
         this.passValues();
 
-        this.activeMessage = [];
         this.list = 'recieved';
 
         this.filterForm = this.formBuilder.group({
@@ -115,16 +114,29 @@ constructor(
     private switch_list(type: string) {
         this.list = type;
         this.resetList();
+        if (this.list === 'recieved') {
+            if (this.recieved_messages.length > 0) {
+                this.getContent(0, 'recieved');
+            }
+        } else if (this.list === 'sent') {
+            if (this.sent_messages.length > 0) {
+                this.getContent(0, 'sent');
+            }
+        }
     }
 
     // expands selected message
     private getContent(i: number, type: string) {
-        if (type === 'sent') {
-            this.activeMessage = this.sent_messages[i];
-            this.active_index = i;
-        } else if (type === 'recieved') {
-            this.activeMessage = this.recieved_messages[i];
-            this.active_index = i;
+        if (i === this.active_index) {
+            this.resetList();
+        } else {
+            if (type === 'sent') {
+                this.activeMessage = this.sent_messages[i];
+                this.active_index = i;
+            } else if (type === 'recieved') {
+                this.activeMessage = this.recieved_messages[i];
+                this.active_index = i;
+            }
         }
     }
 
