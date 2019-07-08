@@ -17,6 +17,7 @@ import { StatsModule } from './stats/stats.module';
 import { SubjectsModule } from './subjects/subjects.module';
 import { UsersModule } from './users/users.module';
 import { MessagesModule } from './messages/messages.module';
+import { MarksModule } from './marks/marks.module';
 
 
 
@@ -40,7 +41,8 @@ import { MessagesModule } from './messages/messages.module';
       GroupsModule,
       StatsModule,
       SubjectsModule,
-      UsersModule
+      UsersModule,
+      MarksModule
     ],
     providers: [],
     bootstrap: [AppComponent]
