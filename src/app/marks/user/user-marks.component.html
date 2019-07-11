@@ -1,0 +1,27 @@
+<div class="term-select">
+    Select Term
+    <a class="i">I</a>
+    <a class="i">II</a>
+</div>
+<div class="avg">Avg</div>
+<div class="content_table">
+    <div class="list">
+        <div class="name">
+            Subject
+        </div>
+        <div class="mark">
+            Marks
+        </div>
+    </div>
+    <div class="list" *ngFor="let subject of subjects; index as i">
+        <div class="name">
+            {{ subject.name }} 
+        </div>
+        <div class="mark" *ngFor="let mark of filtered[i]; index as i">
+            {{ mark.value }}
+        </div>
+        <div class="avgs">
+            {{ avg[i] }}
+        </div>
+    </div>
+</div>
