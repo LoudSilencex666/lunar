@@ -4,4 +4,7 @@ export interface Mark {
     weight: number;
     user_id: number;
     subject_id: number;
+    type: string;
+    activation_date: Date;
+    creation_date: Date;
 }

@@ -12,7 +12,14 @@ export class UserMarksComponent implements OnInit {
     subjects: Subject[];
     marks: Mark[];
     filtered: Array<Mark[]> = [];
-    avg: Array<number> = [];
+    avgs: Array<number> = [];
+    proposed_terms: any = [];
+    term_mark: any = [];
+    proposed_final: any = [];
+    final_mark: any = [];
+    g_avg: number;
+    details: any;
+    state: string;
 
     constructor(
         private subjectService: SubjectService,
@@ -21,6 +28,7 @@ export class UserMarksComponent implements OnInit {
 
     ngOnInit() {
         this.getMarks();
+        this.state = 'closed';
     }
 
     getMarks() {
@@ -31,20 +39,38 @@ export class UserMarksComponent implements OnInit {
                 .subscribe((subjects: Subject[]) => {
                 this.subjects = subjects;
                 this.subjects.forEach((item) => {
-                    this.filtered.push(this.marks.filter(v => v.subject_id === item.id));
+                    this.filtered.push(this.marks
+                        .filter(v => v.subject_id === item.id && v.type === 'normal')
+                        .reverse());
+
+                    this.proposed_terms.push(this.marks
+                        .filter(v => v.subject_id === item.id && v.type === 'proposed_term')
+                        .map(v => v.value));
+
+                    this.term_mark.push(this.marks
+                        .filter(v => v.subject_id === item.id && v.type === 'term')
+                        .map(v => v.value));
+
+                    this.proposed_final.push(this.marks
+                        .filter(v => v.subject_id === item.id && v.type === 'proposed_final')
+                        .map(v => v.value));
+
+                    this.final_mark.push(this.marks
+                        .filter(v => v.subject_id === item.id && v.type === 'final')
+                        .map(v => v.value));
                 });
                 const values = this.filtered.map(s => s.map(v => v.value));
                 const weights = this.filtered.map(s => s.map(v => v.weight));
-                this.getAvg(values, weights);
+                this.getAvgs(values, weights);
             });
         });
     }
 
-    getAvg(v: Array<Array<number>>, w: Array<Array<number>>) {
-        const sumarr = [];
-        const w_sumarr = [];
-        let sum = 0;
-        let w_sum = 0;
+    getAvgs(v: Array<Array<number>>, w: Array<Array<number>>) {
+        const sumarr = [],
+        w_sumarr = [];
+        let sum = 0,
+        w_sum = 0;
         for (let i = 0; i < v.length; i++) {
             for (let j = 0; j < v[i].length; j++) {
                 sum += v[i][j] * w[i][j];
@@ -52,10 +78,19 @@ export class UserMarksComponent implements OnInit {
             }
             sumarr.push(sum);
             w_sumarr.push(w_sum);
-            w_sum = 0;
-            sum = 0;
-            this.avg.push(sumarr[i] / w_sumarr[i]);
+            w_sum = sum = 0;
+            this.avgs.push(Math.round((sumarr[i] / w_sumarr[i]) * 100) / 100);
         }
-        console.log(this.avg);
+    }
+
+    showDetails(i: number, j: number, state: string) {
+        this.state = state;
+        console.log(this.state);
+        this.details = {
+            value: this.filtered[i][j].value,
+            weight: this.filtered[i][j].weight,
+            creation_date: this.filtered[i][j].creation_date,
+            subject_name: this.subjects[i].name
+        };
     }
 }

@@ -3,25 +3,62 @@
     <a class="i">I</a>
     <a class="i">II</a>
 </div>
-<div class="avg">Avg</div>
+<div class="avg">
+
+</div>
 <div class="content_table">
     <div class="list">
         <div class="name">
             Subject
         </div>
-        <div class="mark">
+        <div class="mark_list">
             Marks
+        </div>
+        <div class="avgs_list">
+            Avg
+        </div>
+        <div class="proposed_list">
+            P_T
+        </div>
+        <div class="term_list">
+            T
+        </div>
+        <div class="proposed_final_list">
+            P_F
+        </div>
+        <div class="final_list">
+            F
         </div>
     </div>
     <div class="list" *ngFor="let subject of subjects; index as i">
         <div class="name">
             {{ subject.name }} 
         </div>
-        <div class="mark" *ngFor="let mark of filtered[i]; index as i">
-            {{ mark.value }}
+        <div class="mark_list">
+            <div class="mark" *ngFor="let mark of filtered[i]; index as j" (click)="showDetails(i, j, 'opened')">
+                {{ mark.value }}
+            </div>            
         </div>
         <div class="avgs">
-            {{ avg[i] }}
+            {{ avgs[i] }}
+        </div>
+        <div class="proposed">
+            {{ proposed_terms[i] }}
+        </div>
+        <div class="term">
+            {{ term_mark[i] }}
+        </div>
+        <div class="proposed_final">
+            {{ proposed_final[i] }}
+        </div>
+        <div class="final">
+            {{ final_mark[i] }}
         </div>
     </div>
+</div>
+<div class="details" *ngIf="state === 'opened'">
+    <p class="value">Value: {{ details.value}}</p>
+    <p class="weight">Weight: {{ details.weight }}</p>
+    <p class="creation_date">Creation date: {{ details.creation_date | date:'shortDate' }}</p>
+    <p class="subject_name">Subject name: {{ details.subject_name }}</p>
 </div>
